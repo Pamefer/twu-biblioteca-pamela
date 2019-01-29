@@ -20,20 +20,22 @@ public class Biblioteca {
 
     static void readInputOption(){
         Scanner scan = new Scanner(System.in);
+        int option;
         try{
-            int option = scan.nextInt();
-            isValidOption(option);
+            do{
+                option = scan.nextInt();
+            }while(!isValidOption(option));
         } catch (InputMismatchException e){
             System.out.println("Please, select a valid option!");
         }
     }
 
     static boolean isValidOption(int option){
-         boolean isValid = true;
-         if(option != 1){
-             isValid = false;
-             System.out.println("Please, select a valid option!");
-         }
+        boolean isValid = true;
+        if(option != 1){
+            isValid = false;
+            System.out.println("Please, select a valid option!");
+        }
          return isValid;
     }
 
