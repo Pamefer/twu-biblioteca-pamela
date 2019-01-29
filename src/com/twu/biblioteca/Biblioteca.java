@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Biblioteca {
 
@@ -14,6 +16,25 @@ public class Biblioteca {
          optionsList.add("1. List of Books");
          String result = concatList(optionsList);
          return result;
+    }
+
+    static void readInputOption(){
+        Scanner scan = new Scanner(System.in);
+        try{
+            int option = scan.nextInt();
+            isValidOption(option);
+        } catch (InputMismatchException e){
+            System.out.println("Please, select a valid option!");
+        }
+    }
+
+    static boolean isValidOption(int option){
+         boolean isValid = true;
+         if(option != 1){
+             isValid = false;
+             System.out.println("Please, select a valid option!");
+         }
+         return isValid;
     }
 
     static String getListOfBooks(){

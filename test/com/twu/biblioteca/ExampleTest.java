@@ -30,6 +30,20 @@ public class ExampleTest {
     }
 
     @Test
+    public void shouldReturnValidOption(){
+        Boolean expected = true;
+        Boolean actual = new Biblioteca().isValidOption(1);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldReturnInvalidOption(){
+        Boolean expected = false;
+        Boolean actual = new Biblioteca().isValidOption(0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldReturnStringOfBooks(){
         String expected = "The Japanese girl\nYour life\nTake me out\n";
         String actual = new Biblioteca().getListOfBooks();
