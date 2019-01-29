@@ -8,6 +8,5 @@ public class BibliotecaApp {
         System.out.println("\n***** Select an option *****");
         System.out.println(Biblioteca.showOptions());
         Biblioteca.readInputOption();
-//        System.out.println(Biblioteca.getListOfBooks());
     }
 }

@@ -25,8 +25,16 @@ public class Biblioteca {
             do{
                 option = scan.nextInt();
             }while(!isValidOption(option));
+            selectOption(option);
         } catch (InputMismatchException e){
             System.out.println("Please, select a valid option!");
+        }
+    }
+
+    static void selectOption(int option){
+        switch (option){
+            case 1:
+                System.out.println(getListOfBooks());
         }
     }
 
