@@ -9,10 +9,11 @@ public class Biblioteca {
          return greeting;
     }
 
-    static List<String> showOptions(){
+    static String showOptions(){
          List<String> optionsList = new ArrayList<>();
-         optionsList.add("List of Books");
-         return optionsList;
+         optionsList.add("1. List of Books");
+         String result = concatList(optionsList);
+         return result;
     }
 
     static String getListOfBooks(){
@@ -21,7 +22,6 @@ public class Biblioteca {
         listBooks.add(new Book("The Japanese girl"));
         listBooks.add(new Book("Your life"));
         listBooks.add(new Book("Take me out"));
-
         result = concatListOfBooks(listBooks);
 
         return result;
@@ -32,6 +32,14 @@ public class Biblioteca {
         for (Book b: booksList){
             result += b.getName() + "\n";
         }
-         return result;
+        return result;
+    }
+
+    private static String concatList(List<String> newList){
+        String result = "";
+        for (String b: newList){
+            result += b + "\n";
+        }
+        return result;
     }
 }

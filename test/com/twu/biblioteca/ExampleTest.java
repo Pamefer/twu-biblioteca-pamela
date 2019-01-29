@@ -24,8 +24,8 @@ public class ExampleTest {
 
     @Test
     public void shouldShowListOfOptions(){
-        List <String>  expected = Arrays.asList("List of Books");
-        List <String> actual = new Biblioteca().showOptions();
+        String expected = "1. List of Books\n";
+        String actual = new Biblioteca().showOptions();
         assertEquals(expected, actual);
     }
 
