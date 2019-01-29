@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class ExampleTest {
+    private List<String> strings;
+
 
     @Test
     public void shouldReturnWelcomeMessage() {
@@ -20,7 +23,7 @@ public class ExampleTest {
 
     @Test
     public void shouldReturnListOfBooks(){
-        String expected = "Principito\nRosas\nMil y una noche";
+        String expected = "The Japanese girl\nYour life\nTake me out\n";
         String actual = new Biblioteca().getListOfBooks();
         assertEquals(expected, actual);
     }
