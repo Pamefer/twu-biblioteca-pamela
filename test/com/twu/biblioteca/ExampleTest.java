@@ -45,7 +45,11 @@ public class ExampleTest {
 
     @Test
     public void shouldReturnStringOfBooks(){
-        String expected = "The Japanese girl\nYour life\nTake me out\n";
+
+        String expected = String.format("|%20s|%20s|%20s|\n|%20s|%20s|%20s|\n|%20s|%20s|%20s|\n",
+                "The Japanese girl", "Winston Graham", "1971",
+                "Your life","Pamela","2015",
+                "Take me out","Gianella","1987");
         String actual = new Biblioteca().getListOfBooks();
         assertEquals(expected, actual);
     }

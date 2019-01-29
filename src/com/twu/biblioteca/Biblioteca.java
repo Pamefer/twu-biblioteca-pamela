@@ -50,9 +50,9 @@ public class Biblioteca {
     static String getListOfBooks(){
          String result = "";
         List <Book> listBooks = new ArrayList<>();
-        listBooks.add(new Book("The Japanese girl"));
-        listBooks.add(new Book("Your life"));
-        listBooks.add(new Book("Take me out"));
+        listBooks.add(new Book("The Japanese girl", "Winston Graham", "1971"));
+        listBooks.add(new Book("Your life","Pamela","2015"));
+        listBooks.add(new Book("Take me out","Gianella","1987"));
         result = concatListOfBooks(listBooks);
 
         return result;
@@ -61,7 +61,7 @@ public class Biblioteca {
     private static String concatListOfBooks(List<Book> booksList){
         String result = "";
         for (Book b: booksList){
-            result += b.getName() + "\n";
+            result += String.format("|%20s|%20s|%20s|\n",b.getName(), b.getAuthor(), b.getYear());
         }
         return result;
     }
