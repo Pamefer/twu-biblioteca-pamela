@@ -9,6 +9,12 @@ public class Biblioteca {
          return greeting;
     }
 
+    static List<String> showOptions(){
+         List<String> optionsList = new ArrayList<>();
+         optionsList.add("List of Books");
+         return optionsList;
+    }
+
     static String getListOfBooks(){
          String result = "";
         List <Book> listBooks = new ArrayList<>();
