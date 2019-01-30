@@ -5,20 +5,29 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Biblioteca {
+     private List<Book> listBooks;
 
-     static String welcomeMessage(){
+    Biblioteca(){
+        this.listBooks = new ArrayList<>();
+        this.listBooks.add(new Book("The Japanese girl", "Winston Graham", "1971"));
+        this.listBooks.add(new Book("Your life","Pamela","2015"));
+        this.listBooks.add(new Book("Take me out","Gianella","1987"));
+    }
+
+
+    String welcomeMessage(){
          String greeting = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
          return greeting;
     }
 
-    static String showOptions(){
+    String showOptions(){
          List<String> optionsList = new ArrayList<>();
          optionsList.add("1. List of Books");
          String result = concatList(optionsList);
          return result;
     }
 
-    static void readInputOption(){
+    void readInputOption(){
         Scanner scan = new Scanner(System.in);
         int option;
         try{
@@ -31,14 +40,14 @@ public class Biblioteca {
         }
     }
 
-    static void selectOption(int option){
+    void selectOption(int option){
         switch (option){
             case 1:
                 System.out.println(getListOfBooks());
         }
     }
 
-    static boolean isValidOption(int option){
+    boolean isValidOption(int option){
         boolean isValid = true;
         if(option != 1){
             isValid = false;
@@ -47,18 +56,15 @@ public class Biblioteca {
          return isValid;
     }
 
-    static String getListOfBooks(){
-         String result = "";
-        List <Book> listBooks = new ArrayList<>();
-        listBooks.add(new Book("The Japanese girl", "Winston Graham", "1971"));
-        listBooks.add(new Book("Your life","Pamela","2015"));
-        listBooks.add(new Book("Take me out","Gianella","1987"));
+    String getListOfBooks(){
+        String result = "";
         result = concatListOfBooks(listBooks);
-
         return result;
     }
 
-    private static String concatListOfBooks(List<Book> booksList){
+
+
+    private String concatListOfBooks(List<Book> booksList){
         String result = "";
         for (Book b: booksList){
             result += String.format("|%20s|%20s|%20s|\n",b.getName(), b.getAuthor(), b.getYear());
@@ -66,7 +72,7 @@ public class Biblioteca {
         return result;
     }
 
-    private static String concatList(List<String> newList){
+    private String concatList(List<String> newList){
         String result = "";
         for (String b: newList){
             result += b + "\n";
