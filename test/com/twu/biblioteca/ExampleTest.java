@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 
+import com.sun.xml.internal.bind.v2.TODO;
 import org.junit.Test;
 
 import java.lang.reflect.Array;
@@ -68,7 +69,7 @@ public class ExampleTest {
     }
 
     @Test
-    public void shouldBeOneBookLessFromAllBooks(){
+    public void shouldBeOneBookLessFromAllBooksIfCheckOut(){
         int numberBookExpected = 2;
         Biblioteca biblioteca = new Biblioteca();
 
@@ -78,7 +79,17 @@ public class ExampleTest {
     }
 
     @Test
-    public void shouldDoNotBeInTheListOfBooks(){
+    public void shouldNotBeOneBookLessFromAllBooksIfBookNotExist(){
+        int numberBookExpected = 3;
+        Biblioteca biblioteca = new Biblioteca();
+
+        biblioteca.removeBook("Me");
+        int numberBooksActual = biblioteca.getListBooks().size();
+        assertEquals(numberBookExpected, numberBooksActual);
+    }
+
+    @Test
+    public void shouldDoNotBeInTheListOfBooksIfCheckout(){
         Biblioteca biblioteca = new Biblioteca();
 
         biblioteca.removeBook("You");
@@ -86,6 +97,11 @@ public class ExampleTest {
         assertFalse(listBooksExpected.contains(
                 new Book ("Take me out","Gianella","1987")
         ));
+    }
+
+    @Test
+    public void  shouldNoRemoveBookIfIsNotInListWhenCheckout(){
+        // TO-DO
     }
 
     @Test
@@ -98,6 +114,15 @@ public class ExampleTest {
         assertEquals( successMessageExpected, successMessageActual);
     }
 
+    @Test
+    public void shouldReturnUnSuccessMessageIfBookIsNotAvailable(){
+        String unsuccessMessageExpected = "Sorry, that book is not available";
+        Boolean isCheckOut = false;
+
+        String unsuccessMessageActual = new Biblioteca().returnMessage(isCheckOut);
+
+        assertEquals( unsuccessMessageExpected, unsuccessMessageActual);
+    }
 
 
 }

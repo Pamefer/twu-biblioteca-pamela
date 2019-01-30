@@ -55,7 +55,7 @@ public class Biblioteca {
     }
 
     String returnMessage (Boolean isBookRemoved){
-        return isBookRemoved ? "Thank you, enjoy the book": "None";
+        return isBookRemoved ? "Thank you, enjoy the book": "Sorry, that book is not available";
     }
 
      String getBooks(){
