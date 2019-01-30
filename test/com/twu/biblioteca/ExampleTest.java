@@ -58,15 +58,15 @@ public class ExampleTest {
         assertEquals(expected, actual);
     }
 
-//    @Test
-//    public void shouldBeOneBookLessFromAllBooks(){
-//        int numberBookExpected = 2;
-//        Biblioteca biblioteca = new Biblioteca();
-//
-//        biblioteca.removeBook();
-//        int numberBooksActual = biblioteca.getListBooks().size();
-//        assertEquals(numberBookExpected, numberBooksActual);
-//    }
+    @Test
+    public void shouldBeOneBookLessFromAllBooks(){
+        int numberBookExpected = 2;
+        Biblioteca biblioteca = new Biblioteca();
+
+        biblioteca.removeBook("You");
+        int numberBooksActual = biblioteca.getListBooks().size();
+        assertEquals(numberBookExpected, numberBooksActual);
+    }
 
 //    @Test
 //    public void shouldRemoveBookFromList(){

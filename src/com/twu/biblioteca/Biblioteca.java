@@ -63,11 +63,7 @@ public class Biblioteca {
         return input;
     }
 
-    void removeBook(){
-        System.out.println("Please enter the name of the book to check-out: ");
-        Scanner scan = new Scanner(System.in);
-        String book = scan.nextLine();
-
+    void removeBook(String book){
         for(Book item: listBooks){
             if(item.getName().contains(book)){
                 listBooks.remove(item);
