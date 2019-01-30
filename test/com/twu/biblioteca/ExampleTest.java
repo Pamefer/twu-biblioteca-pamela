@@ -27,16 +27,23 @@ public class ExampleTest {
     }
 
     @Test
-    public void shouldReturnValidOption(){
+    public void shouldReturnValidOptionMenu(){
         Boolean expected = true;
         Boolean actual = new Biblioteca().isValidOption("1");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldReturnInvalidOption(){
+    public void shouldReturnInvalidOptionMenuOutOfRange(){
         Boolean expected = false;
-        Boolean actual = new Biblioteca().isValidOption("2");
+        Boolean actual = new Biblioteca().isValidOption("5");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldReturnInvalidOptionMenuNotNumber(){
+        Boolean expected = false;
+        Boolean actual = new Biblioteca().isValidOption("j");
         assertEquals(expected, actual);
     }
 
@@ -45,21 +52,21 @@ public class ExampleTest {
 
         String expected = String.format("|%20s|%20s|%20s|\n|%20s|%20s|%20s|\n|%20s|%20s|%20s|\n",
                 "The Japanese girl", "Winston Graham", "1971",
-                "Your life","Pamela","2015",
+                "You","Pamela","2015",
                 "Take me out","Gianella","1987");
         String actual = new Biblioteca().getBooks();
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void shouldBeOneBookLessFromAllBooks(){
-        int numberBookExpected = 2;
-        Biblioteca biblioteca = new Biblioteca();
-
-        biblioteca.removeBook();
-        int numberBooksActual = biblioteca.getListBooks().size();
-        assertEquals(numberBookExpected, numberBooksActual);
-    }
+//    @Test
+//    public void shouldBeOneBookLessFromAllBooks(){
+//        int numberBookExpected = 2;
+//        Biblioteca biblioteca = new Biblioteca();
+//
+//        biblioteca.removeBook();
+//        int numberBooksActual = biblioteca.getListBooks().size();
+//        assertEquals(numberBookExpected, numberBooksActual);
+//    }
 
 //    @Test
 //    public void shouldRemoveBookFromList(){
