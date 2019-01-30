@@ -47,6 +47,9 @@ public class Biblioteca {
         switch (options){
             case 1:
                 System.out.println(getBooks());
+                System.out.println("\nPlease enter the name of the book to check-out:");
+                String bookToCheckOut = readConsoleInput();
+                removeBook(bookToCheckOut);
         }
     }
 

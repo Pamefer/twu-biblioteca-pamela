@@ -8,9 +8,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
 import static org.junit.Assert.*;
 
 public class ExampleTest {
+    List<Book> listBooks = new ArrayList<>();
+
+    public void booksList(){
+        listBooks.add(new Book("The Japanese girl", "Winston Graham", "1971"));
+        listBooks.add(new Book("You","Pamela","2015"));
+        listBooks.add(new Book("Take me out","Gianella","1987"));
+    }
 
     @Test
     public void shouldReturnWelcomeMessage() {
@@ -68,17 +77,17 @@ public class ExampleTest {
         assertEquals(numberBookExpected, numberBooksActual);
     }
 
-//    @Test
-//    public void shouldRemoveBookFromList(){
-//        String bookRemoved = "Your life";
-//        Biblioteca biblioteca = new Biblioteca();
-//
-//        List<Book> listBooksExpected = biblioteca.removeBook();
-//
-//        listBooksExpected.forEach(item ->
-//                assertNotEquals(bookRemoved, item.getAuthor())
-//        );
-//
-//    }
+    @Test
+    public void shouldDoNotBeInTheListOfBooks(){
+        Biblioteca biblioteca = new Biblioteca();
+
+        biblioteca.removeBook("You");
+        List<Book> listBooksExpected =  biblioteca.getListBooks();
+        assertFalse(listBooksExpected.contains(
+                new Book ("Take me out","Gianella","1987")
+        ));
+    }
+
+
 
 }
