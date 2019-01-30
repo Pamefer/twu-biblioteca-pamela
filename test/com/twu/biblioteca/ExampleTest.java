@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class ExampleTest {
 
@@ -30,14 +29,14 @@ public class ExampleTest {
     @Test
     public void shouldReturnValidOption(){
         Boolean expected = true;
-        Boolean actual = new Biblioteca().isValidOption(1);
+        Boolean actual = new Biblioteca().isValidOption("1");
         assertEquals(expected, actual);
     }
 
     @Test
     public void shouldReturnInvalidOption(){
         Boolean expected = false;
-        Boolean actual = new Biblioteca().isValidOption(0);
+        Boolean actual = new Biblioteca().isValidOption("2");
         assertEquals(expected, actual);
     }
 
@@ -48,7 +47,31 @@ public class ExampleTest {
                 "The Japanese girl", "Winston Graham", "1971",
                 "Your life","Pamela","2015",
                 "Take me out","Gianella","1987");
-        String actual = new Biblioteca().getListOfBooks();
+        String actual = new Biblioteca().getBooks();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void shouldBeOneBookLessFromAllBooks(){
+        int numberBookExpected = 2;
+        Biblioteca biblioteca = new Biblioteca();
+
+        biblioteca.removeBook();
+        int numberBooksActual = biblioteca.getListBooks().size();
+        assertEquals(numberBookExpected, numberBooksActual);
+    }
+
+//    @Test
+//    public void shouldRemoveBookFromList(){
+//        String bookRemoved = "Your life";
+//        Biblioteca biblioteca = new Biblioteca();
+//
+//        List<Book> listBooksExpected = biblioteca.removeBook();
+//
+//        listBooksExpected.forEach(item ->
+//                assertNotEquals(bookRemoved, item.getAuthor())
+//        );
+//
+//    }
+
 }
