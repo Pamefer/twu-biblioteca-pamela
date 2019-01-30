@@ -88,6 +88,16 @@ public class ExampleTest {
         ));
     }
 
+    @Test
+    public void shouldReturnSuccessMessageIfCheckOutTrue(){
+        String successMessageExpected = "Thank you, enjoy the book";
+        Boolean isCheckOut = true;
+
+        String successMessageActual = new Biblioteca().returnMessage(isCheckOut);
+
+        assertEquals( successMessageExpected, successMessageActual);
+    }
+
 
 
 }

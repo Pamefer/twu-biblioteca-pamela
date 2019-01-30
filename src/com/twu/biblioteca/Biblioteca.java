@@ -49,8 +49,13 @@ public class Biblioteca {
                 System.out.println(getBooks());
                 System.out.println("\nPlease enter the name of the book to check-out:");
                 String bookToCheckOut = readConsoleInput();
-                removeBook(bookToCheckOut);
+                Boolean isBookRemoved = removeBook(bookToCheckOut);
+                System.out.println(returnMessage(isBookRemoved));;
         }
+    }
+
+    String returnMessage (Boolean isBookRemoved){
+        return isBookRemoved ? "Thank you, enjoy the book": "None";
     }
 
      String getBooks(){
@@ -66,13 +71,16 @@ public class Biblioteca {
         return input;
     }
 
-    void removeBook(String book){
+    Boolean removeBook(String book){
+        Boolean isBookRemoved = false;
         for(Book item: listBooks){
             if(item.getName().contains(book)){
                 listBooks.remove(item);
+                isBookRemoved = true;
             }
         }
         listBooks.forEach(item -> System.out.println(item.getAuthor()));
+        return isBookRemoved;
     }
 
     private String concatList(List<String> newList){
