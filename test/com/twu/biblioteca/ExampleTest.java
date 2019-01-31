@@ -25,7 +25,7 @@ public class ExampleTest {
 
     @Test
     public void shouldShowListOfOptions(){
-        String expected = "1. List of Books\n";
+        String expected = "1. List of Books\n2. Quit\n";
         String actual = new Biblioteca().showOptions();
         assertEquals(expected, actual);
     }
@@ -33,21 +33,24 @@ public class ExampleTest {
     @Test
     public void shouldReturnValidOptionMenu(){
         Boolean expected = true;
-        Boolean actual = new Biblioteca().isValidOption("1");
+        Biblioteca biblioteca = new Biblioteca();
+        Boolean actual = new Biblioteca().isValidOption("2", biblioteca.getOptionsList());
         assertEquals(expected, actual);
     }
 
     @Test
     public void shouldReturnInvalidOptionMenuOutOfRange(){
         Boolean expected = false;
-        Boolean actual = new Biblioteca().isValidOption("5");
+        Biblioteca biblioteca = new Biblioteca();
+        Boolean actual = new Biblioteca().isValidOption("5", biblioteca.getOptionsList());
         assertEquals(expected, actual);
     }
 
     @Test
     public void shouldReturnInvalidOptionMenuNotNumber(){
         Boolean expected = false;
-        Boolean actual = new Biblioteca().isValidOption("j");
+        Biblioteca biblioteca = new Biblioteca();
+        Boolean actual = new Biblioteca().isValidOption("j", biblioteca.getOptionsList());
         assertEquals(expected, actual);
     }
 

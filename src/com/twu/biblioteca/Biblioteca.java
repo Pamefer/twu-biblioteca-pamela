@@ -9,6 +9,8 @@ public class Biblioteca {
 
     private List<Book> listBooks;
     private List<Book> listBooksAvailable;
+    private List<String> optionsList;
+
     Scanner scan = new Scanner(System.in);
 
 
@@ -17,6 +19,7 @@ public class Biblioteca {
         this.listBooks.add(new Book("The Japanese girl", "Winston Graham", "1971", true));
         this.listBooks.add(new Book("You","Pamela","2015", true));
         this.listBooks.add(new Book("Take me out","Gianella","1987", true));
+        showOptions();
         getListBooksAvailable();
     }
 
@@ -31,14 +34,19 @@ public class Biblioteca {
         return listBooksAvailable;
     }
 
+    public List<String> getOptionsList() {
+        return optionsList;
+    }
+
     String welcomeMessage(){
          String greeting = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
          return greeting;
     }
 
     String showOptions(){
-         List<String> optionsList = new ArrayList<>();
-         optionsList.add("1. List of Books");
+        optionsList = new ArrayList<>();
+        optionsList.add("1. List of Books");
+         optionsList.add("2. Quit");
          String result = concatList(optionsList);
          return result;
     }
@@ -47,7 +55,7 @@ public class Biblioteca {
         String option;
         do{
             option = readConsoleInput();
-        }while(!isValidOption(option));
+        }while(!isValidOption(option, optionsList));
         selectOption(option);
     }
 
@@ -70,8 +78,6 @@ public class Biblioteca {
                     String bookToReturn = readConsoleInput();
                     Boolean isBookReturn= returnBook(bookToReturn);
                 }
-
-
         }
     }
 
@@ -125,11 +131,11 @@ public class Biblioteca {
         return result;
     }
 
-    boolean isValidOption(String option){
+    boolean isValidOption(String option, List<String> optionsList){
         boolean isValid = true;
         try{
             int options = Integer.parseInt(option);
-            if(options != 1){
+            if(options == 0 || options > optionsList.size() ){
                 isValid = false;
                 System.out.println("Please, select a valid option!");
             }
