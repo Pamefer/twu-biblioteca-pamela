@@ -96,7 +96,7 @@ public class Biblioteca {
     }
 
     String returnMessageReturn (Boolean isBookRemoved){
-        return isBookRemoved ? "Thank you for returning the book": "";
+        return isBookRemoved ? "Thank you for returning the book": "That is not a valid book to return";
     }
 
      String getBooks(){
@@ -126,7 +126,7 @@ public class Biblioteca {
 
     Boolean returnBook(String book){
         Boolean isBookReturned = false;
-        for(Book item: listBooks){
+        for(Book item: listBooks){ // add funtionality
             if(item.getName().contains(book)){
                 item.setAvailable(true);
                 isBookReturned = true;

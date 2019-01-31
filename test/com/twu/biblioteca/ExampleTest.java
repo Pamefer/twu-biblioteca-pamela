@@ -143,4 +143,14 @@ public class ExampleTest {
 
         assertEquals( successMessageExpected, successMessageActual);
     }
+
+    @Test
+    public void shouldReturnMessageIfBookAlreadyInLibrary(){
+        String successMessageExpected = "That is not a valid book to return";
+        Boolean isReturned = false;
+
+        String successMessageActual = new Biblioteca().returnMessageReturn(isReturned);
+
+        assertEquals( successMessageExpected, successMessageActual);
+    }
 }
