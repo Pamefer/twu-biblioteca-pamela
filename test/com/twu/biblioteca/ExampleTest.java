@@ -100,7 +100,7 @@ public class ExampleTest {
         String successMessageExpected = "Thank you, enjoy the book";
         Boolean isCheckOut = true;
 
-        String successMessageActual = new Biblioteca().returnMessage(isCheckOut);
+        String successMessageActual = new Biblioteca().returnMessageCheckout(isCheckOut);
 
         assertEquals( successMessageExpected, successMessageActual);
     }
@@ -110,7 +110,7 @@ public class ExampleTest {
         String unsuccessMessageExpected = "Sorry, that book is not available";
         Boolean isCheckOut = false;
 
-        String unsuccessMessageActual = new Biblioteca().returnMessage(isCheckOut);
+        String unsuccessMessageActual = new Biblioteca().returnMessageCheckout(isCheckOut);
 
         assertEquals( unsuccessMessageExpected, unsuccessMessageActual);
     }
@@ -134,4 +134,13 @@ public class ExampleTest {
         assertEquals(numberBookExpected, numberBooksActual);
     }
 
+    @Test
+    public void shouldReturnSuccessMessageIfReturned(){
+        String successMessageExpected = "Thank you for returning the book";
+        Boolean isReturned = true;
+
+        String successMessageActual = new Biblioteca().returnMessageReturn(isReturned);
+
+        assertEquals( successMessageExpected, successMessageActual);
+    }
 }

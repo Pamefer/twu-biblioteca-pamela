@@ -72,13 +72,14 @@ public class Biblioteca {
                     System.out.println("\nPlease enter the name of the book to CHECK-OUT:");
                     String bookToCheckOut = readConsoleInput();
                     Boolean isBookRemoved = checkoutBook(bookToCheckOut);
-                    System.out.println(returnMessage(isBookRemoved));
+                    System.out.println(returnMessageCheckout(isBookRemoved));
                     readInputOption();
                 }
                 if(optionBook.equals("2")){
                     System.out.println("\nPlease enter the name of the book to RETURN:");
                     String bookToReturn = readConsoleInput();
                     Boolean isBookReturn= returnBook(bookToReturn);
+
                     readInputOption();
 
                 }
@@ -90,14 +91,18 @@ public class Biblioteca {
         }
     }
 
-    String returnMessage (Boolean isBookRemoved){
+    String returnMessageCheckout (Boolean isBookRemoved){
         return isBookRemoved ? "Thank you, enjoy the book": "Sorry, that book is not available";
+    }
+
+    String returnMessageReturn (Boolean isBookRemoved){
+        return isBookRemoved ? "Thank you for returning the book": "";
     }
 
      String getBooks(){
         String result = "";
         for (Book b: getListBooksAvailable()){
-                result += String.format("|%20s|%20s|%20s|%20s|\n",b.getName(), b.getAuthor(), b.getYear(), b.getAvailable());
+                result += String.format("|%20s|%20s|%20s|\n",b.getName(), b.getAuthor(), b.getYear());
         }
         return result;
     }
