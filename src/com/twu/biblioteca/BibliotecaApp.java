@@ -9,10 +9,8 @@ public class BibliotecaApp {
         String firstGreeting = biblioteca.welcomeMessage();
         System.out.println(firstGreeting);
 
-       // do{
-            System.out.println("\n***** Select an option *****");
-            biblioteca.readInputOption();
-       // }while();
+        biblioteca.readInputOption();
+
 
     }
 

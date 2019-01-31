@@ -10,6 +10,9 @@ public class Book extends Resource {
         this.year = year;
     }
 
+    public Book(){}
+
+
     public String getAuthor() {
         return author;
     }
@@ -17,4 +20,5 @@ public class Book extends Resource {
     public String getYear() {
         return year;
     }
+
 }

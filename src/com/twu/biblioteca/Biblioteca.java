@@ -4,9 +4,10 @@ import java.util.List;
 
 public class Biblioteca {
 
-    private List<Book> listBooks;
-    private List<Book> listBooksAvailable;
+    private List<Resource> listBooks;
+    private List<Resource> listBooksAvailable;
     private List<String> optionsList;
+    private Resource resource;
 
 
     Biblioteca(){
@@ -19,9 +20,9 @@ public class Biblioteca {
     }
 
 
-    public List<Book> getListBooksAvailable() {
+    public List<Resource> getListBooksAvailable() {
         listBooksAvailable = new ArrayList<>();
-        for (Book b: listBooks){
+        for (Resource b: listBooks){
             if(b.getAvailable()){
                 listBooksAvailable.add(b);
             }
@@ -41,18 +42,22 @@ public class Biblioteca {
     void showOptions(){
         optionsList = new ArrayList<>();
         optionsList.add("1. List of Books");
-        optionsList.add("2. Quit");
+        optionsList.add("2. Check out Books");
+        optionsList.add("3. Return Books");
+        optionsList.add("4. Quit");
     }
 
     void readInputOption(){
-        String option;
-        String result = concatList(optionsList);
-        System.out.println(result);
-
+        System.out.println("\n***** Select an option *****");
+        String option = "1";
         do{
-            option = Utililty.readConsoleInput();
-        }while(!Utililty.isValidOption(option, optionsList));
-        selectOption(option);
+            String result = concatList(optionsList);
+            System.out.println(result);
+            do{
+                option = Utililty.readConsoleInput();
+            }while(!Utililty.isValidOption(option, optionsList));
+            selectOption(option);
+        }while (option != "4");
     }
 
     void selectOption(String option){
@@ -60,29 +65,24 @@ public class Biblioteca {
         switch (options){
             case 1:
                 System.out.println(getBooks());
-                System.out.println("\n Select an option\n1. Check-out\n2. Return book");
-                String optionBook = Utililty.readConsoleInput();
-                System.out.println(optionBook);
-                if(optionBook.equals("1")){
-                    System.out.println("\nPlease enter the name of the book to CHECK-OUT:");
-                    String bookToCheckOut = Utililty.readConsoleInput();
-                    Boolean isBookRemoved = checkoutBook(bookToCheckOut);
-                    System.out.println(returnMessageCheckout(isBookRemoved));
-                    readInputOption();
-                }
-                if(optionBook.equals("2")){
-                    System.out.println("\nPlease enter the name of the book to RETURN:");
-                        String bookToReturn = Utililty.readConsoleInput();
-                    Boolean isBookReturn= returnBook(bookToReturn);
-
-                    readInputOption();
-
-                }
                 break;
             case 2:
-                System.out.println("yay");
+                System.out.println("\nPlease enter the name of the book to CHECK-OUT:");
+                String bookToCheckOut = Utililty.readConsoleInput();
+                Boolean isBookRemoved = checkoutBook(bookToCheckOut);
+//                    resource = new Resource();
+//                    Boolean isBookRemoved2 = resource.checkout(bookToCheckOut, getListBooksAvailable());
+                System.out.println(returnMessageCheckout(isBookRemoved));
                 break;
-
+            case 3:
+                System.out.println("\nPlease enter the name of the book to RETURN:");
+                String bookToReturn = Utililty.readConsoleInput();
+                Boolean isBookReturn= returnBook(bookToReturn);
+                break;
+            case 4:
+                System.out.println("Exit");
+                System.exit(0);
+                break;
         }
     }
 
@@ -96,15 +96,15 @@ public class Biblioteca {
 
      String getBooks(){
         String result = "";
-        for (Book b: getListBooksAvailable()){
-                result += String.format("|%20s|%20s|%20s|\n",b.getName(), b.getAuthor(), b.getYear());
+        for (Resource b: getListBooksAvailable()){
+            result += String.format("%20s|\n",b.getName());
         }
         return result;
     }
 
     Boolean checkoutBook(String book){
         Boolean isBookRemoved = false;
-        for(Book item: listBooksAvailable){
+        for(Resource item: listBooksAvailable){
             if(item.getName().contains(book)){
                 item.setAvailable(false);
                 isBookRemoved = true;
@@ -115,7 +115,7 @@ public class Biblioteca {
 
     Boolean returnBook(String book){
         Boolean isBookReturned = false;
-        for(Book item: listBooks){ // add funtionality
+        for(Resource item: listBooks){ // add funtionality
             if(item.getName().contains(book)){
                 item.setAvailable(true);
                 isBookReturned = true;
