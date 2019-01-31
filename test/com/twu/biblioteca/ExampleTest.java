@@ -23,12 +23,12 @@ public class ExampleTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void shouldShowListOfOptions(){
-        String expected = "1. List of Books\n2. Quit\n";
-        String actual = new Biblioteca().showOptions();
-        assertEquals(expected, actual);
-    }
+//    @Test
+//    public void shouldShowListOfOptions(){
+//        String expected = "1. List of Books\n2. Quit\n";
+//        String actual = new Biblioteca().showOptions();
+//        assertEquals(expected, actual);
+//    }
 
     @Test
     public void shouldReturnValidOptionMenu(){

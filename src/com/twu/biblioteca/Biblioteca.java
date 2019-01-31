@@ -43,16 +43,17 @@ public class Biblioteca {
          return greeting;
     }
 
-    String showOptions(){
+    void showOptions(){
         optionsList = new ArrayList<>();
         optionsList.add("1. List of Books");
-         optionsList.add("2. Quit");
-         String result = concatList(optionsList);
-         return result;
+        optionsList.add("2. Quit");
     }
 
     void readInputOption(){
         String option;
+        String result = concatList(optionsList);
+        System.out.println(result);
+
         do{
             option = readConsoleInput();
         }while(!isValidOption(option, optionsList));
@@ -72,12 +73,20 @@ public class Biblioteca {
                     String bookToCheckOut = readConsoleInput();
                     Boolean isBookRemoved = checkoutBook(bookToCheckOut);
                     System.out.println(returnMessage(isBookRemoved));
+                    readInputOption();
                 }
                 if(optionBook.equals("2")){
                     System.out.println("\nPlease enter the name of the book to RETURN:");
                     String bookToReturn = readConsoleInput();
                     Boolean isBookReturn= returnBook(bookToReturn);
+                    readInputOption();
+
                 }
+                break;
+            case 2:
+                System.out.println("yay");
+                break;
+
         }
     }
 
@@ -87,8 +96,8 @@ public class Biblioteca {
 
      String getBooks(){
         String result = "";
-        for (Book b: listBooks){
-                result += String.format("|%20s|%20s|%20s|\n",b.getName(), b.getAuthor(), b.getYear());
+        for (Book b: getListBooksAvailable()){
+                result += String.format("|%20s|%20s|%20s|%20s|\n",b.getName(), b.getAuthor(), b.getYear(), b.getAvailable());
         }
         return result;
     }
@@ -107,7 +116,6 @@ public class Biblioteca {
                 isBookRemoved = true;
             }
         }
-        listBooksAvailable.forEach(item -> System.out.println(item.getAuthor()+item.getAvailable()));
         return isBookRemoved;
     }
 
@@ -119,7 +127,6 @@ public class Biblioteca {
                 isBookReturned = true;
             }
         }
-        listBooksAvailable.forEach(item -> System.out.println(item.getAuthor()+item.getAvailable()));
         return isBookReturned;
     }
 
