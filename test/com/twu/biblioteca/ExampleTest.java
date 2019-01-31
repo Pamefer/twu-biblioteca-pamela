@@ -113,6 +113,15 @@ public class ExampleTest {
     }
 
     @Test
+    public void hasBeenReturnedABook(){
+        Biblioteca biblioteca = new Biblioteca();
+
+        boolean isReturnActual = biblioteca.returnBook("You");
+
+        assertTrue(isReturnActual);
+    }
+
+    @Test
     public void shouldBeOneBookMoreFromAvailableBooksIfIsReturned(){
         int numberBookExpected = 3;
         Biblioteca biblioteca = new Biblioteca();
