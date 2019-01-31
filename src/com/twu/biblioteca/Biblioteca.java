@@ -57,8 +57,9 @@ public class Biblioteca {
                 option = Utililty.readConsoleInput();
             }while(!Utililty.isValidOption(option, optionsList));
             selectOption(option);
-        }while (option != "4");
+        }while (isOptionToQuit(option));
     }
+
 
     void selectOption(String option){
         int options = Integer.parseInt(option);
@@ -92,6 +93,10 @@ public class Biblioteca {
 
     String returnMessageReturn (Boolean isBookRemoved){
         return isBookRemoved ? "Thank you for returning the book": "That is not a valid book to return";
+    }
+
+    Boolean isOptionToQuit (String option){
+       return option == "4";
     }
 
      String getBooks(){

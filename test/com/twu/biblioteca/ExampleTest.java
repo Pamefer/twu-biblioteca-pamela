@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.sun.xml.internal.bind.v2.TODO;
 import org.junit.Test;
 
@@ -23,6 +24,11 @@ public class ExampleTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void shouldReturnTrueIfSelectOptionOfQuit() {
+        Boolean actual = new Biblioteca().isOptionToQuit("4");
+        assertTrue(actual);
+    }
 //    @Test
 //    public void shouldShowListOfOptions(){
 //        String expected = "1. List of Books\n2. Quit\n";
