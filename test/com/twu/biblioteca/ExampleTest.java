@@ -63,6 +63,15 @@ public class ExampleTest {
     }
 
     @Test
+    public void hasBeenChekoutABook(){
+        Biblioteca biblioteca = new Biblioteca();
+
+        boolean isCheckoutActual = biblioteca.checkoutBook("You");
+
+        assertTrue(isCheckoutActual);
+    }
+
+    @Test
     public void shouldBeOneBookLessFromAllBooksIfCheckOut(){
         int numberBookExpected = 2;
         Biblioteca biblioteca = new Biblioteca();
@@ -71,6 +80,7 @@ public class ExampleTest {
         int numberBooksActual = biblioteca.getListBooksAvailable().size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
+
 
     @Test
     public void shouldNotBeOneBookLessFromAvailableBooksIfBookNotExist(){
