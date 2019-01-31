@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
-import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
 import static org.junit.Assert.*;
 
 public class ExampleTest {
@@ -71,13 +69,23 @@ public class ExampleTest {
         assertEquals(expected, actual);
     }
 
+    /* Check out book */
     @Test
-    public void hasBeenChekoutABook(){
+    public void shouldChekoutABook(){
         Biblioteca biblioteca = new Biblioteca();
 
         boolean isCheckoutActual = biblioteca.checkoutBook("You");
 
         assertTrue(isCheckoutActual);
+    }
+
+    @Test
+    public void shouldNotChekoutABook(){
+        Biblioteca biblioteca = new Biblioteca();
+
+        boolean isCheckoutActual = biblioteca.checkoutBook("dgadah");
+
+        assertFalse(isCheckoutActual);
     }
 
     @Test
@@ -121,13 +129,24 @@ public class ExampleTest {
         assertEquals( unsuccessMessageExpected, unsuccessMessageActual);
     }
 
+    /* Return Book */
+
     @Test
-    public void hasBeenReturnedABook(){
+    public void shouldReturnABook(){
         Biblioteca biblioteca = new Biblioteca();
 
         boolean isReturnActual = biblioteca.returnBook("You");
 
         assertTrue(isReturnActual);
+    }
+
+    @Test
+    public void shouldNotReturnABook(){
+        Biblioteca biblioteca = new Biblioteca();
+
+        boolean isReturnActual = biblioteca.returnBook("Adasdasd");
+
+        assertFalse(isReturnActual);
     }
 
     @Test

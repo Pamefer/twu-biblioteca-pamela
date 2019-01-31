@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Biblioteca {
 
+
     private List<Resource> listBooks;
     private List<Resource> listBooksAvailable;
     private List<String> optionsList;
@@ -18,7 +19,6 @@ public class Biblioteca {
         showOptions();
         getListBooksAvailable();
     }
-
 
     public List<Resource> getListBooksAvailable() {
         listBooksAvailable = new ArrayList<>();
@@ -79,6 +79,7 @@ public class Biblioteca {
                 System.out.println("\nPlease enter the name of the book to RETURN:");
                 String bookToReturn = Utililty.readConsoleInput();
                 Boolean isBookReturn= returnBook(bookToReturn);
+                System.out.println(returnMessageReturn(isBookReturn));
                 break;
             case 4:
                 System.out.println("Exit");
@@ -96,7 +97,7 @@ public class Biblioteca {
     }
 
     Boolean isOptionToQuit (String option){
-       return option == "4";
+       return option != "4";
     }
 
      String getBooks(){
@@ -120,10 +121,11 @@ public class Biblioteca {
 
     Boolean returnBook(String book){
         Boolean isBookReturned = false;
-        for(Resource item: listBooks){ // add funtionality
-            if(item.getName().contains(book)){
-                item.setAvailable(true);
+        for(Resource item: listBooks){
+            if(item.getName().contains(book) && !item.getAvailable()) {
                 isBookReturned = true;
+                item.setAvailable(true);
+                break;
             }
         }
         return isBookReturned;
