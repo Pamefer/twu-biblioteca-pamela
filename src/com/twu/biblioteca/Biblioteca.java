@@ -1,9 +1,6 @@
 package com.twu.biblioteca;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Scanner;
 
 public class Biblioteca {
 
@@ -11,14 +8,12 @@ public class Biblioteca {
     private List<Book> listBooksAvailable;
     private List<String> optionsList;
 
-    Scanner scan = new Scanner(System.in);
-
 
     Biblioteca(){
         this.listBooks = new ArrayList<>();
-        this.listBooks.add(new Book("The Japanese girl", "Winston Graham", "1971", true));
-        this.listBooks.add(new Book("You","Pamela","2015", true));
-        this.listBooks.add(new Book("Take me out","Gianella","1987", true));
+        this.listBooks.add(new Book("The Japanese girl", true, "Winston Graham", "1971"));
+        this.listBooks.add(new Book("You",true, "Pamela","2015"));
+        this.listBooks.add(new Book("Take me out",true, "Gianella","1987"));
         showOptions();
         getListBooksAvailable();
     }
@@ -55,8 +50,8 @@ public class Biblioteca {
         System.out.println(result);
 
         do{
-            option = readConsoleInput();
-        }while(!isValidOption(option, optionsList));
+            option = Utililty.readConsoleInput();
+        }while(!Utililty.isValidOption(option, optionsList));
         selectOption(option);
     }
 
@@ -66,18 +61,18 @@ public class Biblioteca {
             case 1:
                 System.out.println(getBooks());
                 System.out.println("\n Select an option\n1. Check-out\n2. Return book");
-                String optionBook = readConsoleInput();
+                String optionBook = Utililty.readConsoleInput();
                 System.out.println(optionBook);
                 if(optionBook.equals("1")){
                     System.out.println("\nPlease enter the name of the book to CHECK-OUT:");
-                    String bookToCheckOut = readConsoleInput();
+                    String bookToCheckOut = Utililty.readConsoleInput();
                     Boolean isBookRemoved = checkoutBook(bookToCheckOut);
                     System.out.println(returnMessageCheckout(isBookRemoved));
                     readInputOption();
                 }
                 if(optionBook.equals("2")){
                     System.out.println("\nPlease enter the name of the book to RETURN:");
-                    String bookToReturn = readConsoleInput();
+                        String bookToReturn = Utililty.readConsoleInput();
                     Boolean isBookReturn= returnBook(bookToReturn);
 
                     readInputOption();
@@ -105,12 +100,6 @@ public class Biblioteca {
                 result += String.format("|%20s|%20s|%20s|\n",b.getName(), b.getAuthor(), b.getYear());
         }
         return result;
-    }
-
-
-     String readConsoleInput(){
-        String input = scan.nextLine();
-        return input;
     }
 
     Boolean checkoutBook(String book){
@@ -142,21 +131,4 @@ public class Biblioteca {
         }
         return result;
     }
-
-    boolean isValidOption(String option, List<String> optionsList){
-        boolean isValid = true;
-        try{
-            int options = Integer.parseInt(option);
-            if(options == 0 || options > optionsList.size() ){
-                isValid = false;
-                System.out.println("Please, select a valid option!");
-            }
-        }catch(NumberFormatException e){
-            System.out.println("Please, select a number");
-            isValid = false;
-        }
-        return isValid;
-    }
-
-
 }

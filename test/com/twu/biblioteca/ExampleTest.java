@@ -34,7 +34,7 @@ public class ExampleTest {
     public void shouldReturnValidOptionMenu(){
         Boolean expected = true;
         Biblioteca biblioteca = new Biblioteca();
-        Boolean actual = new Biblioteca().isValidOption("2", biblioteca.getOptionsList());
+        Boolean actual = new Utililty().isValidOption("2", biblioteca.getOptionsList());
         assertEquals(expected, actual);
     }
 
@@ -42,7 +42,7 @@ public class ExampleTest {
     public void shouldReturnInvalidOptionMenuOutOfRange(){
         Boolean expected = false;
         Biblioteca biblioteca = new Biblioteca();
-        Boolean actual = new Biblioteca().isValidOption("5", biblioteca.getOptionsList());
+        Boolean actual = new Utililty().isValidOption("5", biblioteca.getOptionsList());
         assertEquals(expected, actual);
     }
 
@@ -50,7 +50,7 @@ public class ExampleTest {
     public void shouldReturnInvalidOptionMenuNotNumber(){
         Boolean expected = false;
         Biblioteca biblioteca = new Biblioteca();
-        Boolean actual = new Biblioteca().isValidOption("j", biblioteca.getOptionsList());
+        Boolean actual = new Utililty().isValidOption("j", biblioteca.getOptionsList());
         assertEquals(expected, actual);
     }
 
