@@ -16,12 +16,6 @@ import static org.junit.Assert.*;
 public class ExampleTest {
     List<Book> listBooks = new ArrayList<>();
 
-    public void booksList(){
-        listBooks.add(new Book("The Japanese girl", "Winston Graham", "1971"));
-        listBooks.add(new Book("You","Pamela","2015"));
-        listBooks.add(new Book("Take me out","Gianella","1987"));
-    }
-
     @Test
     public void shouldReturnWelcomeMessage() {
         String expected = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
@@ -73,35 +67,19 @@ public class ExampleTest {
         int numberBookExpected = 2;
         Biblioteca biblioteca = new Biblioteca();
 
-        biblioteca.removeBook("You");
-        int numberBooksActual = biblioteca.getListBooks().size();
+        biblioteca.checkoutBook("You");
+        int numberBooksActual = biblioteca.getListBooksAvailable().size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
 
     @Test
-    public void shouldNotBeOneBookLessFromAllBooksIfBookNotExist(){
+    public void shouldNotBeOneBookLessFromAvailableBooksIfBookNotExist(){
         int numberBookExpected = 3;
         Biblioteca biblioteca = new Biblioteca();
 
-        biblioteca.removeBook("Me");
-        int numberBooksActual = biblioteca.getListBooks().size();
+        biblioteca.checkoutBook("Me");
+        int numberBooksActual = biblioteca.getListBooksAvailable().size();
         assertEquals(numberBookExpected, numberBooksActual);
-    }
-
-    @Test
-    public void shouldDoNotBeInTheListOfBooksIfCheckout(){
-        Biblioteca biblioteca = new Biblioteca();
-
-        biblioteca.removeBook("You");
-        List<Book> listBooksExpected =  biblioteca.getListBooks();
-        assertFalse(listBooksExpected.contains(
-                new Book ("Take me out","Gianella","1987")
-        ));
-    }
-
-    @Test
-    public void  shouldNoRemoveBookIfIsNotInListWhenCheckout(){
-        // TO-DO
     }
 
     @Test
@@ -124,5 +102,14 @@ public class ExampleTest {
         assertEquals( unsuccessMessageExpected, unsuccessMessageActual);
     }
 
+    @Test
+    public void shouldBeOneBookMoreFromAvailableBooksIfIsReturned(){
+        int numberBookExpected = 3;
+        Biblioteca biblioteca = new Biblioteca();
+
+        biblioteca.returnBook("You");
+        int numberBooksActual = biblioteca.getListBooksAvailable().size();
+        assertEquals(numberBookExpected, numberBooksActual);
+    }
 
 }
