@@ -17,18 +17,28 @@ public class Biblioteca {
         this.resources.add(new Book("The Japanese girl", true, "1971", "Winston Graham"));
         this.resources.add(new Book("You",true, "2015", "Pamela"));
         this.resources.add(new Book("Take me out",true, "1987", "Gianella"));
+        this.resources.add(new Movie("Movie1", true, "1971", "Winston Graham", "3"));
+        this.resources.add(new Movie("Movie3",true, "2015", "Pamela","4"));
+        this.resources.add(new Movie("Movie3",true, "1987", "Gianella","5"));
         showOptions();
-        getListResourceAvailable();
+        //getListResourceAvailable("0");
     }
 
-    public List<Resource> getListResourceAvailable() {
-        listBooksAvailable = new ArrayList<>();
+    public List<Resource> getListResourceAvailable(String userOption) {
+        List<Resource> lstR=null;
+                listBooksAvailable = new ArrayList<>();
+        listMoviesAvailable = new ArrayList<>();
         for (Resource b: resources){
             if(b.getAvailable()){
                 returnListDependingTypeOfResource(b).add(b);
             }
         }
-        return listBooksAvailable;
+        if(userOption.equals("1")){
+            lstR = listBooksAvailable;
+        }else{
+            lstR = listMoviesAvailable;
+        }
+        return lstR;
     }
 
     List<Resource> returnListDependingTypeOfResource(Resource b){
@@ -80,9 +90,9 @@ public class Biblioteca {
                 System.out.println(String.format("%s\n%-10s%-10s\n", "Choose an option","1. Books","2. Movies"));
                 String userOption = Utililty.readConsoleInput();
                 if(userOption.equals("1")){
-                    System.out.println(getBooks());
+                    System.out.println(listarRecursos(userOption));
                 }else{
-                    System.out.println("aaa");
+                    System.out.println(listarRecursos(userOption));
                 }
 
                 break;
@@ -107,9 +117,9 @@ public class Biblioteca {
         }
     }
 
-     String getBooks(){
+     String listarRecursos(String userOption){
         String result = "";
-        for (Resource b: getListResourceAvailable()){
+        for (Resource b: getListResourceAvailable(userOption)){
             result += b;
         }
         return result;
