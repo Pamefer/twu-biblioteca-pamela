@@ -9,7 +9,7 @@ public class BookTest {
 
     @Before
     public void chhargeBookOfTest(){
-        book = new Book("Flowers", true, "Radnedy Cajas", "1678");
+        book = new Book("Flowers", true, "1678", "Radnedy Cajas");
     }
 
     @Test

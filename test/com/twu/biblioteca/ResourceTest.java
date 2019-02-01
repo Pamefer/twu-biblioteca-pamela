@@ -10,7 +10,7 @@ public class ResourceTest {
 
     @Before
     public void chargeResourcesOfTest(){
-        resource = new Resource("Flowers", true);
+        resource = new Resource("Flowers", true, "2015");
     }
 
     @Test
@@ -23,5 +23,11 @@ public class ResourceTest {
     public void shouldGetAvailabilityOfResource() {
         Boolean actual = resource.getAvailable();
         assertEquals(true, actual);
+    }
+
+    @Test
+    public void shouldGetYearOfResource() {
+        String actual = resource.getYear();
+        assertEquals("2015", actual);
     }
 }

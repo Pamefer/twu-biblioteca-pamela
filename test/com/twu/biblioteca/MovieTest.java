@@ -6,10 +6,11 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class MovieTest {
+    Movie movie;
 
     @Before
     public void chargeMovie(){
-        Movie movie = new Movie("Sky", true, "2016", "Adam Sandler");
+        movie = new Movie("Sky", true, "2016", "Adam Sandler");
     }
 
     @Test

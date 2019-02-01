@@ -13,9 +13,9 @@ public class Biblioteca {
 
     Biblioteca(){
         this.listBooks = new ArrayList<>();
-        this.listBooks.add(new Book("The Japanese girl", true, "Winston Graham", "1971"));
-        this.listBooks.add(new Book("You",true, "Pamela","2015"));
-        this.listBooks.add(new Book("Take me out",true, "Gianella","1987"));
+        this.listBooks.add(new Book("The Japanese girl", true, "1971", "Winston Graham"));
+        this.listBooks.add(new Book("You",true, "2015", "Pamela"));
+        this.listBooks.add(new Book("Take me out",true, "1987", "Gianella"));
         showOptions();
         getListBooksAvailable();
     }
