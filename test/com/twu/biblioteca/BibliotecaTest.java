@@ -20,7 +20,7 @@ public class BibliotecaTest {
 
     @Test
     public void shouldReturnFalseIfNotSelectOptionOfQuit() {
-        Boolean actual = new Biblioteca().isOptionToQuit("4");
+        Boolean actual = new Biblioteca().isOptionToQuit(4);
         assertFalse(actual);
     }
 //    @Test

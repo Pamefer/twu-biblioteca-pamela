@@ -11,6 +11,13 @@ public class Biblioteca {
     private List<String> optionsList;
     private Resource resource;
 
+    private final int LIST_BOOK_OPTION = 1;
+    private final int LIST_MOVIE_OPTION = 2;
+    private final int CHECKOUT_RESOURCE_OPTION = 3;
+    private final int RETURN_RESOURCE_OPTION = 4;
+    private final int QUIT_OPTION = 5;
+
+
 
     Biblioteca(){
         this.resources = new ArrayList<>();
@@ -21,10 +28,9 @@ public class Biblioteca {
         this.resources.add(new Movie("Movie3",true, "2015", "Pamela","4"));
         this.resources.add(new Movie("Movie3",true, "1987", "Gianella","5"));
         showOptions();
-        //getListResourceAvailable("0");
     }
 
-    public List<Resource> getListResourceAvailable(String userOption) {
+    public List<Resource> getListResourceAvailable(int userOption) {
         List<Resource> lstR=null;
                 listBooksAvailable = new ArrayList<>();
         listMoviesAvailable = new ArrayList<>();
@@ -33,9 +39,10 @@ public class Biblioteca {
                 returnListDependingTypeOfResource(b).add(b);
             }
         }
-        if(userOption.equals("1")){
+        if(userOption == LIST_BOOK_OPTION){
             lstR = listBooksAvailable;
-        }else{
+        }
+        if(userOption == LIST_MOVIE_OPTION){
             lstR = listMoviesAvailable;
         }
         return lstR;
@@ -64,14 +71,15 @@ public class Biblioteca {
     void showOptions(){
         optionsList = new ArrayList<>();
         optionsList.add("1. List of Books");
-        optionsList.add("2. Check out Books");
-        optionsList.add("3. Return Books");
-        optionsList.add("4. Quit");
+        optionsList.add("2. List of Movies");
+        optionsList.add("3. Check out Books");
+        optionsList.add("4. Return Books");
+        optionsList.add("5. Quit");
     }
 
     void readInputOption(){
         System.out.println("\n***** Select an option *****");
-        String option = "1";
+        String option;
         do{
             String result = Utililty.concatList(optionsList);
             System.out.println(result);
@@ -79,24 +87,20 @@ public class Biblioteca {
                 option = Utililty.readConsoleInput();
             }while(!Utililty.isValidOption(option, optionsList));
             selectOption(option);
-        }while (isOptionToQuit(option));
+        }while (isOptionToQuit(Integer.parseInt(option)));
     }
 
 
     void selectOption(String option){
         int options = Integer.parseInt(option);
         switch (options){
-            case 1:
-                System.out.println(String.format("%s\n%-10s%-10s\n", "Choose an option","1. Books","2. Movies"));
-                String userOption = Utililty.readConsoleInput();
-                if(userOption.equals("1")){
-                    System.out.println(listarRecursos(userOption));
-                }else{
-                    System.out.println(listarRecursos(userOption));
-                }
-
+            case LIST_BOOK_OPTION:
+                System.out.println(listarRecursos(LIST_BOOK_OPTION));
                 break;
-            case 2:
+            case LIST_MOVIE_OPTION:
+                System.out.println(listarRecursos(LIST_MOVIE_OPTION));
+                break;
+            case CHECKOUT_RESOURCE_OPTION:
                 System.out.println("\nPlease enter the name of the book to CHECK-OUT:");
                 String bookToCheckOut = Utililty.readConsoleInput();
                 Boolean isBookRemoved = checkoutBook(bookToCheckOut);
@@ -104,20 +108,20 @@ public class Biblioteca {
 //                    Boolean isBookRemoved2 = resource.checkout(bookToCheckOut, getListResourceAvailable());
                 System.out.println(returnMessageCheckout(isBookRemoved));
                 break;
-            case 3:
+            case RETURN_RESOURCE_OPTION:
                 System.out.println("\nPlease enter the name of the book to RETURN:");
                 String bookToReturn = Utililty.readConsoleInput();
                 Boolean isBookReturn= returnBook(bookToReturn);
                 System.out.println(returnMessageReturn(isBookReturn));
                 break;
-            case 4:
+            case QUIT_OPTION:
                 System.out.println("Exit");
                 System.exit(0);
                 break;
         }
     }
 
-     String listarRecursos(String userOption){
+     String listarRecursos(int userOption){
         String result = "";
         for (Resource b: getListResourceAvailable(userOption)){
             result += b;
@@ -156,8 +160,8 @@ public class Biblioteca {
         return isBookRemoved ? "Thank you for returning the book": "That is not a valid book to return";
     }
 
-    Boolean isOptionToQuit (String option){
-        return option != "4";
+    Boolean isOptionToQuit (int option){
+        return option != QUIT_OPTION;
     }
 
     Boolean isInstanceOfBook(Resource b){
