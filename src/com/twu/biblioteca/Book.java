@@ -21,4 +21,8 @@ public class Book extends Resource {
         return year;
     }
 
+    public String toString(){
+        return String.format("|%20s|%20s|%20s|\n", getName(), author, year);
+    }
+
 }

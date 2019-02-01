@@ -25,4 +25,12 @@ public class Utililty {
         }
         return isValid;
     }
+
+    static String concatList(List<String> newList){
+        String result = "";
+        for (String b: newList){
+            result += b + "\n";
+        }
+        return result;
+    }
 }

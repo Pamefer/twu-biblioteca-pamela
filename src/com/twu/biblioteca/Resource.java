@@ -6,15 +6,6 @@ import java.util.List;
 public class Resource {
     private String name;
     private Boolean available;
-    private Book book;
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
 
     public Resource(){
 
@@ -23,7 +14,6 @@ public class Resource {
     public Resource(String name, Boolean available) {
         this.name = name;
         this.available = available;
-        this.book = new Book();
     }
 
     public String getName() {
@@ -38,9 +28,6 @@ public class Resource {
         this.available = available;
     }
 
-//    public Book getBook() {
-//        return book;
-//    }
 
     public Boolean checkout(String book, List<Resource> listBooksAvailable){
         Boolean isBookRemoved = false;

@@ -51,7 +51,7 @@ public class Biblioteca {
         System.out.println("\n***** Select an option *****");
         String option = "1";
         do{
-            String result = concatList(optionsList);
+            String result = Utililty.concatList(optionsList);
             System.out.println(result);
             do{
                 option = Utililty.readConsoleInput();
@@ -88,22 +88,10 @@ public class Biblioteca {
         }
     }
 
-    String returnMessageCheckout (Boolean isBookRemoved){
-        return isBookRemoved ? "Thank you, enjoy the book": "Sorry, that book is not available";
-    }
-
-    String returnMessageReturn (Boolean isBookRemoved){
-        return isBookRemoved ? "Thank you for returning the book": "That is not a valid book to return";
-    }
-
-    Boolean isOptionToQuit (String option){
-       return option != "4";
-    }
-
      String getBooks(){
         String result = "";
         for (Resource b: getListBooksAvailable()){
-            result += String.format("%20s|\n",b.getName());
+            result += b;
         }
         return result;
     }
@@ -131,11 +119,15 @@ public class Biblioteca {
         return isBookReturned;
     }
 
-    private String concatList(List<String> newList){
-        String result = "";
-        for (String b: newList){
-            result += b + "\n";
-        }
-        return result;
+    String returnMessageCheckout (Boolean isBookRemoved){
+        return isBookRemoved ? "Thank you, enjoy the book": "Sorry, that book is not available";
+    }
+
+    String returnMessageReturn (Boolean isBookRemoved){
+        return isBookRemoved ? "Thank you for returning the book": "That is not a valid book to return";
+    }
+
+    Boolean isOptionToQuit (String option){
+        return option != "4";
     }
 }
