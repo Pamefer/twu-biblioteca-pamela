@@ -94,7 +94,7 @@ public class BibliotecaTest {
         Biblioteca biblioteca = new Biblioteca();
 
         biblioteca.checkoutBook("You");
-        int numberBooksActual = biblioteca.getListBooksAvailable().size();
+        int numberBooksActual = biblioteca.getListResourceAvailable().size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
 
@@ -105,7 +105,7 @@ public class BibliotecaTest {
         Biblioteca biblioteca = new Biblioteca();
 
         biblioteca.checkoutBook("Me");
-        int numberBooksActual = biblioteca.getListBooksAvailable().size();
+        int numberBooksActual = biblioteca.getListResourceAvailable().size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
 
@@ -156,7 +156,7 @@ public class BibliotecaTest {
         Biblioteca biblioteca = new Biblioteca();
 
         biblioteca.returnBook("You");
-        int numberBooksActual = biblioteca.getListBooksAvailable().size();
+        int numberBooksActual = biblioteca.getListResourceAvailable().size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
 
@@ -178,5 +178,24 @@ public class BibliotecaTest {
         String successMessageActual = new Biblioteca().returnMessageReturn(isReturned);
 
         assertEquals( successMessageExpected, successMessageActual);
+    }
+
+    /* Check type of Resource */
+    @Test
+    public void shouldReturnTrueIfIsInstanceOfBook(){
+        Resource book = new Book("Book1", true, "2016", "Autor");
+
+        Boolean actual = new Biblioteca().isInstanceOfBook(book);
+
+        assertTrue(actual);
+    }
+
+    @Test
+    public void shouldReturnTrueIfIsInstanceOfMovie(){
+        Resource movie = new Movie("Movie1", true, "1678", "Director", "5");
+
+        Boolean actual = new Biblioteca().isInstanceOfMovie(movie);
+
+        assertTrue(actual);
     }
 }

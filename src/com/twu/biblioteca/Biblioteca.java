@@ -5,30 +5,42 @@ import java.util.List;
 public class Biblioteca {
 
 
-    private List<Resource> listBooks;
+    private List<Resource> resources;
     private List<Resource> listBooksAvailable;
+    private List<Resource> listMoviesAvailable;
     private List<String> optionsList;
     private Resource resource;
 
 
     Biblioteca(){
-        this.listBooks = new ArrayList<>();
-        this.listBooks.add(new Book("The Japanese girl", true, "1971", "Winston Graham"));
-        this.listBooks.add(new Book("You",true, "2015", "Pamela"));
-        this.listBooks.add(new Book("Take me out",true, "1987", "Gianella"));
+        this.resources = new ArrayList<>();
+        this.resources.add(new Book("The Japanese girl", true, "1971", "Winston Graham"));
+        this.resources.add(new Book("You",true, "2015", "Pamela"));
+        this.resources.add(new Book("Take me out",true, "1987", "Gianella"));
         showOptions();
-        getListBooksAvailable();
+        getListResourceAvailable();
     }
 
-    public List<Resource> getListBooksAvailable() {
+    public List<Resource> getListResourceAvailable() {
         listBooksAvailable = new ArrayList<>();
-        for (Resource b: listBooks){
+        for (Resource b: resources){
             if(b.getAvailable()){
-                listBooksAvailable.add(b);
+                returnListDependingTypeOfResource(b).add(b);
             }
         }
         return listBooksAvailable;
     }
+
+    List<Resource> returnListDependingTypeOfResource(Resource b){
+        if(isInstanceOfBook(b)){
+            return listBooksAvailable;
+        }
+        if(isInstanceOfMovie(b)){
+            return listMoviesAvailable;
+        }
+        return null;
+    }
+
 
     public List<String> getOptionsList() {
         return optionsList;
@@ -65,14 +77,21 @@ public class Biblioteca {
         int options = Integer.parseInt(option);
         switch (options){
             case 1:
-                System.out.println(getBooks());
+                System.out.println(String.format("%s\n%-10s%-10s\n", "Choose an option","1. Books","2. Movies"));
+                String userOption = Utililty.readConsoleInput();
+                if(userOption.equals("1")){
+                    System.out.println(getBooks());
+                }else{
+                    System.out.println("aaa");
+                }
+
                 break;
             case 2:
                 System.out.println("\nPlease enter the name of the book to CHECK-OUT:");
                 String bookToCheckOut = Utililty.readConsoleInput();
                 Boolean isBookRemoved = checkoutBook(bookToCheckOut);
 //                    resource = new Resource();
-//                    Boolean isBookRemoved2 = resource.checkout(bookToCheckOut, getListBooksAvailable());
+//                    Boolean isBookRemoved2 = resource.checkout(bookToCheckOut, getListResourceAvailable());
                 System.out.println(returnMessageCheckout(isBookRemoved));
                 break;
             case 3:
@@ -90,7 +109,7 @@ public class Biblioteca {
 
      String getBooks(){
         String result = "";
-        for (Resource b: getListBooksAvailable()){
+        for (Resource b: getListResourceAvailable()){
             result += b;
         }
         return result;
@@ -109,7 +128,7 @@ public class Biblioteca {
 
     Boolean returnBook(String book){
         Boolean isBookReturned = false;
-        for(Resource item: listBooks){
+        for(Resource item: resources){
             if(item.getName().contains(book) && !item.getAvailable()) {
                 isBookReturned = true;
                 item.setAvailable(true);
@@ -129,5 +148,13 @@ public class Biblioteca {
 
     Boolean isOptionToQuit (String option){
         return option != "4";
+    }
+
+    Boolean isInstanceOfBook(Resource b){
+        return b instanceof Book;
+    }
+
+    Boolean isInstanceOfMovie(Resource b){
+        return b instanceof Movie;
     }
 }
