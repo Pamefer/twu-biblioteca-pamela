@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class ExampleTest {
+public class BibliotecaTest {
     List<Book> listBooks = new ArrayList<>();
 
     @Test
@@ -23,9 +23,9 @@ public class ExampleTest {
     }
 
     @Test
-    public void shouldReturnTrueIfSelectOptionOfQuit() {
+    public void shouldReturnFalseIfNotSelectOptionOfQuit() {
         Boolean actual = new Biblioteca().isOptionToQuit("4");
-        assertTrue(actual);
+        assertFalse(actual);
     }
 //    @Test
 //    public void shouldShowListOfOptions(){
@@ -133,9 +133,10 @@ public class ExampleTest {
 
     @Test
     public void shouldReturnABook(){
+        Book b = new Book("You", false, "Pamela", "2015");
         Biblioteca biblioteca = new Biblioteca();
 
-        boolean isReturnActual = biblioteca.returnBook("You");
+        boolean isReturnActual = biblioteca.returnBook(b.getName());
 
         assertTrue(isReturnActual);
     }
