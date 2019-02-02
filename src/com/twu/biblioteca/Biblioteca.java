@@ -8,6 +8,7 @@ public class Biblioteca {
     private List<Resource> listBooksAvailable;
     private List<Resource> listMoviesAvailable;
     private final int LIST_BOOK_OPTION = 1;
+    private final int DEFAULT_OPTION = 1;
 
     Biblioteca(){
         this.resourcesList = new ArrayList<>();
@@ -17,7 +18,7 @@ public class Biblioteca {
         this.resourcesList.add(new Movie("Movie1", true, "1971", "Winston Graham", "3"));
         this.resourcesList.add(new Movie("Movie3",true, "2015", "Pamela","4"));
         this.resourcesList.add(new Movie("Movie3",true, "1987", "Gianella","5"));
-        getListResourceAvailable(1);
+        getListResourceAvailable(DEFAULT_OPTION);
     }
 
     public List<Resource> getListResourceAvailable(int userOption) {
