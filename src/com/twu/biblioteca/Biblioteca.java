@@ -4,21 +4,19 @@ import java.util.List;
 
 public class Biblioteca {
 
-    private List<Resource> resources;
+    private List<Resource> resourcesList;
     private List<Resource> listBooksAvailable;
     private List<Resource> listMoviesAvailable;
-    private List<String> optionsList;
-    private Resource resource;
     private final int LIST_BOOK_OPTION = 1;
 
     Biblioteca(){
-        this.resources = new ArrayList<>();
-        this.resources.add(new Book("The Japanese girl", true, "1971", "Winston Graham"));
-        this.resources.add(new Book("You",true, "2015", "Pamela"));
-        this.resources.add(new Book("Take me out",true, "1987", "Gianella"));
-        this.resources.add(new Movie("Movie1", true, "1971", "Winston Graham", "3"));
-        this.resources.add(new Movie("Movie3",true, "2015", "Pamela","4"));
-        this.resources.add(new Movie("Movie3",true, "1987", "Gianella","5"));
+        this.resourcesList = new ArrayList<>();
+        this.resourcesList.add(new Book("The Japanese girl", true, "1971", "Winston Graham"));
+        this.resourcesList.add(new Book("You",true, "2015", "Pamela"));
+        this.resourcesList.add(new Book("Take me out",true, "1987", "Gianella"));
+        this.resourcesList.add(new Movie("Movie1", true, "1971", "Winston Graham", "3"));
+        this.resourcesList.add(new Movie("Movie3",true, "2015", "Pamela","4"));
+        this.resourcesList.add(new Movie("Movie3",true, "1987", "Gianella","5"));
         getListResourceAvailable(1);
     }
 
@@ -32,7 +30,7 @@ public class Biblioteca {
     void createListsOfResourcesAvailable(){
         listBooksAvailable = new ArrayList<>();
         listMoviesAvailable = new ArrayList<>();
-        for (Resource resource: resources){
+        for (Resource resource: resourcesList){
             if(resource.getAvailable() && isInstanceOfBook(resource)) {
                 listBooksAvailable.add(resource);
             }
@@ -46,7 +44,7 @@ public class Biblioteca {
          String greeting = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
          return greeting;
     }
-    
+
     String listarRecursos(int userOption){
         String result = "";
         for (Resource resource: getListResourceAvailable(userOption)){
@@ -68,7 +66,7 @@ public class Biblioteca {
 
     Boolean returnBook(String book){
         Boolean isBookReturned = false;
-        for(Resource item: resources){
+        for(Resource item: resourcesList){
             if(item.getName().contains(book) && !item.getAvailable()) {
                 isBookReturned = true;
                 item.setAvailable(true);
