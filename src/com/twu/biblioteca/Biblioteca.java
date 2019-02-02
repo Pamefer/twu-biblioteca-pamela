@@ -31,21 +31,21 @@ public class Biblioteca {
     }
 
     public List<Resource> getListResourceAvailable(int userOption) {
-        List<Resource> lstR=null;
-                listBooksAvailable = new ArrayList<>();
+        List<Resource> listOfTypeOfResource=null;
+        listBooksAvailable = new ArrayList<>();
         listMoviesAvailable = new ArrayList<>();
-        for (Resource b: resources){
-            if(b.getAvailable()){
-                returnListDependingTypeOfResource(b).add(b);
+        for (Resource resource: resources){
+            if(resource.getAvailable()){
+                returnListDependingTypeOfResource(resource).add(resource);
             }
         }
         if(userOption == LIST_BOOK_OPTION){
-            lstR = listBooksAvailable;
+            listOfTypeOfResource = listBooksAvailable;
         }
         if(userOption == LIST_MOVIE_OPTION){
-            lstR = listMoviesAvailable;
+            listOfTypeOfResource = listMoviesAvailable;
         }
-        return lstR;
+        return listOfTypeOfResource;
     }
 
     List<Resource> returnListDependingTypeOfResource(Resource b){
@@ -123,8 +123,8 @@ public class Biblioteca {
 
      String listarRecursos(int userOption){
         String result = "";
-        for (Resource b: getListResourceAvailable(userOption)){
-            result += b;
+        for (Resource resource: getListResourceAvailable(userOption)){
+            result += resource;
         }
         return result;
     }
@@ -164,11 +164,11 @@ public class Biblioteca {
         return option != QUIT_OPTION;
     }
 
-    Boolean isInstanceOfBook(Resource b){
-        return b instanceof Book;
+    Boolean isInstanceOfBook(Resource resource){
+        return resource instanceof Book;
     }
 
-    Boolean isInstanceOfMovie(Resource b){
-        return b instanceof Movie;
+    Boolean isInstanceOfMovie(Resource resource){
+        return resource instanceof Movie;
     }
 }
