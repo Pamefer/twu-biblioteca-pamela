@@ -10,8 +10,6 @@ public class Biblioteca {
     private List<String> optionsList;
     private Resource resource;
     private final int LIST_BOOK_OPTION = 1;
-    private final int LIST_MOVIE_OPTION = 2;
-
 
     Biblioteca(){
         this.resources = new ArrayList<>();
@@ -25,41 +23,30 @@ public class Biblioteca {
     }
 
     public List<Resource> getListResourceAvailable(int userOption) {
-        List<Resource> listOfTypeOfResource=null;
-
-        listBooksAvailable = new ArrayList<>();
-        listMoviesAvailable = new ArrayList<>();
-        for (Resource resource: resources){
-            if(resource.getAvailable()){
-                returnListDependingTypeOfResource(resource).add(resource);
-            }
-        }
-        if(userOption == LIST_BOOK_OPTION){
-            listOfTypeOfResource = listBooksAvailable;
-        }
-        if(userOption == LIST_MOVIE_OPTION){
-            listOfTypeOfResource = listMoviesAvailable;
-        }
+        List<Resource> listOfTypeOfResource = null;
+        createListsOfResourcesAvailable();
+        listOfTypeOfResource = (userOption == LIST_BOOK_OPTION) ? listBooksAvailable : listMoviesAvailable;
         return listOfTypeOfResource;
     }
 
-    List<Resource> returnListDependingTypeOfResource(Resource b){
-        if(isInstanceOfBook(b)){
-            return listBooksAvailable;
+    void createListsOfResourcesAvailable(){
+        listBooksAvailable = new ArrayList<>();
+        listMoviesAvailable = new ArrayList<>();
+        for (Resource resource: resources){
+            if(resource.getAvailable() && isInstanceOfBook(resource)) {
+                listBooksAvailable.add(resource);
+            }
+            if(resource.getAvailable() && isInstanceOfMovie(resource)){
+                listMoviesAvailable.add(resource);
+            }
         }
-        if(isInstanceOfMovie(b)){
-            return listMoviesAvailable;
-        }
-        return null;
     }
-
 
     String welcomeMessage(){
          String greeting = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
          return greeting;
     }
-
-
+    
     String listarRecursos(int userOption){
         String result = "";
         for (Resource resource: getListResourceAvailable(userOption)){
