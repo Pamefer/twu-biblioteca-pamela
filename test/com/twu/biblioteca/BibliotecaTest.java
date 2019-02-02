@@ -18,11 +18,11 @@ public class BibliotecaTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void shouldReturnFalseIfNotSelectOptionOfQuit() {
-        Boolean actual = new Biblioteca().isOptionToQuit(4);
-        assertFalse(actual);
-    }
+//    @Test
+//    public void shouldReturnFalseIfNotSelectOptionOfQuit() {
+//        Boolean actual = new Menu().isOptionToQuit(4);
+//        assertFalse(actual);
+//    }
 //    @Test
 //    public void shouldShowListOfOptions(){
 //        String expected = "1. List of Books\n2. Quit\n";
@@ -33,24 +33,27 @@ public class BibliotecaTest {
     @Test
     public void shouldReturnValidOptionMenu(){
         Boolean expected = true;
-        Biblioteca biblioteca = new Biblioteca();
-        Boolean actual = new Utililty().isValidOption("2", biblioteca.getOptionsList());
+        Biblioteca biblioteca= new Biblioteca();
+        Menu menu = new Menu(biblioteca);
+        Boolean actual = new Utililty().isValidOption("2", menu.getOptionsList());
         assertEquals(expected, actual);
     }
 
     @Test
     public void shouldReturnInvalidOptionMenuOutOfRange(){
         Boolean expected = false;
-        Biblioteca biblioteca = new Biblioteca();
-        Boolean actual = new Utililty().isValidOption("5", biblioteca.getOptionsList());
+        Biblioteca biblioteca= new Biblioteca();
+        Menu menu = new Menu(biblioteca);
+        Boolean actual = new Utililty().isValidOption("6", menu.getOptionsList());
         assertEquals(expected, actual);
     }
 
     @Test
     public void shouldReturnInvalidOptionMenuNotNumber(){
         Boolean expected = false;
-        Biblioteca biblioteca = new Biblioteca();
-        Boolean actual = new Utililty().isValidOption("j", biblioteca.getOptionsList());
+        Biblioteca biblioteca= new Biblioteca();
+        Menu menu = new Menu(biblioteca);
+        Boolean actual = new Utililty().isValidOption("jjjjj", menu.getOptionsList());
         assertEquals(expected, actual);
     }
 
