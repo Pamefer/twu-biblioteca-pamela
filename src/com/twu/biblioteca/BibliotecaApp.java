@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.sql.SQLOutput;
-
 public class BibliotecaApp {
 
     public static void main(String[] args) {

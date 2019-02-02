@@ -46,7 +46,7 @@ public class Biblioteca {
          return greeting;
     }
 
-    String listarRecursos(int userOption){
+    String showResources(int userOption){
         String result = "";
         for (Resource resource: getListResourceAvailable(userOption)){
             result += resource;

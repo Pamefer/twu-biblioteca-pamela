@@ -41,10 +41,10 @@ public class Menu {
         int options = Integer.parseInt(option);
         switch (options){
             case LIST_BOOK_OPTION:
-                System.out.println(biblioteca.listarRecursos(LIST_BOOK_OPTION));
+                System.out.println(biblioteca.showResources(LIST_BOOK_OPTION));
                 break;
             case LIST_MOVIE_OPTION:
-                System.out.println(biblioteca.listarRecursos(LIST_MOVIE_OPTION));
+                System.out.println(biblioteca.showResources(LIST_MOVIE_OPTION));
                 break;
             case CHECKOUT_RESOURCE_OPTION:
                 System.out.println("\nPlease enter the name of the book to CHECK-OUT:");
