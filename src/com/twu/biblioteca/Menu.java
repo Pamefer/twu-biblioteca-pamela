@@ -7,9 +7,10 @@ public class Menu {
     private List<String> optionsList;
     private final int LIST_BOOK_OPTION = 1;
     private final int LIST_MOVIE_OPTION = 2;
-    private final int CHECKOUT_RESOURCE_OPTION = 3;
-    private final int RETURN_RESOURCE_OPTION = 4;
-    private final int QUIT_OPTION = 5;
+    private final int CHECKOUT_BOOK_OPTION = 3;
+    private final int CHECKOUT_MOVIE_OPTION = 4;
+    private final int RETURN_BOOK_OPTION = 5;
+    private final int QUIT_OPTION = 6;
     private Biblioteca biblioteca;
     ;
 
@@ -19,8 +20,9 @@ public class Menu {
         optionsList.add("1. List of Books");
         optionsList.add("2. List of Movies");
         optionsList.add("3. Check out Books");
-        optionsList.add("4. Return Books");
-        optionsList.add("5. Quit");
+        optionsList.add("4. Check out Movies");
+        optionsList.add("5. Return Books");
+        optionsList.add("6. Quit");
     }
 
 
@@ -46,15 +48,23 @@ public class Menu {
             case LIST_MOVIE_OPTION:
                 System.out.println(biblioteca.showResources(LIST_MOVIE_OPTION));
                 break;
-            case CHECKOUT_RESOURCE_OPTION:
-                System.out.println("\nPlease enter the name of the book to CHECK-OUT:");
+            case CHECKOUT_BOOK_OPTION:
+                System.out.println("\nPlease enter the name of the BOOK to CHECK-OUT:");
                 String bookToCheckOut = Utililty.readConsoleInput();
                 Boolean isBookRemoved = biblioteca.checkoutBook(bookToCheckOut);
 //                    resource = new Resource();
 //                    Boolean isBookRemoved2 = resource.checkout(bookToCheckOut, getListResourceAvailable());
                 System.out.println(biblioteca.returnMessageCheckout(isBookRemoved));
                 break;
-            case RETURN_RESOURCE_OPTION:
+            case CHECKOUT_MOVIE_OPTION:
+                System.out.println("\nPlease enter the name of the MOVIE to CHECK-OUT:");
+                String movieToCheckOut = Utililty.readConsoleInput();
+                Boolean isMovieRemoved = biblioteca.checkoutResource(movieToCheckOut, CHECKOUT_MOVIE_OPTION);
+//                    resource = new Resource();
+//                    Boolean isBookRemoved2 = resource.checkout(bookToCheckOut, getListResourceAvailable());
+                System.out.println(biblioteca.returnMessageCheckout(isMovieRemoved));
+                break;
+            case RETURN_BOOK_OPTION:
                 System.out.println("\nPlease enter the name of the book to RETURN:");
                 String bookToReturn = Utililty.readConsoleInput();
                 Boolean isBookReturn= biblioteca.returnBook(bookToReturn);

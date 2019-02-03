@@ -7,6 +7,7 @@ public class Biblioteca {
     private List<Resource> resourcesList;
     private List<Resource> listBooksAvailable;
     private List<Resource> listMoviesAvailable;
+
     private final int LIST_BOOK_OPTION = 1;
     private final int DEFAULT_OPTION = 1;
 
@@ -54,10 +55,22 @@ public class Biblioteca {
         return result;
     }
 
-    Boolean checkoutBook(String book){
+//    Boolean checkoutBook(String book){
+//        Boolean isBookRemoved = false;
+//        for(Resource item: listBooksAvailable){
+//            if(item.getName().contains(book)){
+//                item.setAvailable(false);
+//                isBookRemoved = true;
+//            }
+//        }
+//        return isBookRemoved;
+//    }
+
+
+    Boolean checkoutResource(String resource, int userOption){
         Boolean isBookRemoved = false;
-        for(Resource item: listBooksAvailable){
-            if(item.getName().contains(book)){
+        for(Resource item: getListResourceAvailable(userOption)){
+            if(item.getName().contains(resource)){
                 item.setAvailable(false);
                 isBookRemoved = true;
             }
