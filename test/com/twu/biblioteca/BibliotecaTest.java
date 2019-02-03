@@ -157,49 +157,30 @@ public class BibliotecaTest {
     public void shouldNotChekoutAMovie(){
         Biblioteca biblioteca = new Biblioteca();
 
-        boolean isCheckoutActual = biblioteca.checkoutResource("MovieX",MOVIE_OPTION);
+        boolean isCheckoutActual = biblioteca.checkoutResource("MovieX", MOVIE_OPTION);
 
         assertFalse(isCheckoutActual);
     }
 
-//    @Test
-//    public void shouldBeOneBookLessFromAllBooksIfCheckOut(){
-//        int numberBookExpected = 2;
-//        Biblioteca biblioteca = new Biblioteca();
-//
-//        biblioteca.checkoutBook("You");
-//        int numberBooksActual = biblioteca.getListResourceAvailable(1).size();
-//        assertEquals(numberBookExpected, numberBooksActual);
-//    }
-//
-//
-//    @Test
-//    public void shouldNotBeOneBookLessFromAvailableBooksIfBookNotExist(){
-//        int numberBookExpected = 3;
-//        Biblioteca biblioteca = new Biblioteca();
-//
-//        biblioteca.checkoutBook("Me");
-//        int numberBooksActual = biblioteca.getListResourceAvailable(1).size();
-//        assertEquals(numberBookExpected, numberBooksActual);
-//    }
-//
-//    @Test
-//    public void shouldReturnSuccessMessageIfCheckOutTrue(){
-//        String successMessageExpected = "Thank you, enjoy the book";
-//        Boolean isCheckOut = true;
-//
-//        String successMessageActual = new Biblioteca().returnMessageCheckout(isCheckOut);
-//
-//        assertEquals( successMessageExpected, successMessageActual);
-//    }
-//
-//    @Test
-//    public void shouldReturnUnSuccessMessageIfBookIsNotAvailable(){
-//        String unsuccessMessageExpected = "Sorry, that book is not available";
-//        Boolean isCheckOut = false;
-//
-//        String unsuccessMessageActual = new Biblioteca().returnMessageCheckout(isCheckOut);
-//
-//        assertEquals( unsuccessMessageExpected, unsuccessMessageActual);
-//    }
+    @Test
+    public void shouldBeOneMovieLessFromAllMoviesIfCheckOut(){
+        int numberMoviesExpected = 2;
+        Biblioteca biblioteca = new Biblioteca();
+
+        biblioteca.checkoutResource("Movie1", MOVIE_OPTION);
+        int numberMoviesActual = biblioteca.getListResourceAvailable(MOVIE_OPTION).size();
+        assertEquals(numberMoviesExpected, numberMoviesActual);
+    }
+
+
+    @Test
+    public void shouldNotBeOneMovieLessFromAvailableMoviesIfMovieNotExist(){
+        int numberMoviesExpected = 3;
+        Biblioteca biblioteca = new Biblioteca();
+
+        biblioteca.checkoutResource("MovieX", MOVIE_OPTION);
+        int numberMoviesActual = biblioteca.getListResourceAvailable(MOVIE_OPTION).size();
+        assertEquals(numberMoviesExpected, numberMoviesActual);
+    }
+
 }
