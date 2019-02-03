@@ -148,4 +148,56 @@ public class BibliotecaTest {
 
         assertTrue(actual);
     }
+
+    /* Checkout Movie */
+
+    @Test
+    public void shouldNotChekoutAMovie(){
+        Biblioteca biblioteca = new Biblioteca();
+
+        boolean isCheckoutActual = biblioteca.checkoutResource("MovieX",2);
+
+        assertFalse(isCheckoutActual);
+    }
+
+//    @Test
+//    public void shouldBeOneBookLessFromAllBooksIfCheckOut(){
+//        int numberBookExpected = 2;
+//        Biblioteca biblioteca = new Biblioteca();
+//
+//        biblioteca.checkoutBook("You");
+//        int numberBooksActual = biblioteca.getListResourceAvailable(1).size();
+//        assertEquals(numberBookExpected, numberBooksActual);
+//    }
+//
+//
+//    @Test
+//    public void shouldNotBeOneBookLessFromAvailableBooksIfBookNotExist(){
+//        int numberBookExpected = 3;
+//        Biblioteca biblioteca = new Biblioteca();
+//
+//        biblioteca.checkoutBook("Me");
+//        int numberBooksActual = biblioteca.getListResourceAvailable(1).size();
+//        assertEquals(numberBookExpected, numberBooksActual);
+//    }
+//
+//    @Test
+//    public void shouldReturnSuccessMessageIfCheckOutTrue(){
+//        String successMessageExpected = "Thank you, enjoy the book";
+//        Boolean isCheckOut = true;
+//
+//        String successMessageActual = new Biblioteca().returnMessageCheckout(isCheckOut);
+//
+//        assertEquals( successMessageExpected, successMessageActual);
+//    }
+//
+//    @Test
+//    public void shouldReturnUnSuccessMessageIfBookIsNotAvailable(){
+//        String unsuccessMessageExpected = "Sorry, that book is not available";
+//        Boolean isCheckOut = false;
+//
+//        String unsuccessMessageActual = new Biblioteca().returnMessageCheckout(isCheckOut);
+//
+//        assertEquals( unsuccessMessageExpected, unsuccessMessageActual);
+//    }
 }
