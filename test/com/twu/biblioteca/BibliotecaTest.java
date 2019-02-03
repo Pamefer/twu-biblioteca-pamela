@@ -10,6 +10,8 @@ import static org.junit.Assert.*;
 
 public class BibliotecaTest {
     List<Book> listBooks = new ArrayList<>();
+    private final int BOOK_OPTION = 1;
+    private final int MOVIE_OPTION = 2;
 
     @Test
     public void shouldReturnWelcomeMessage() {
@@ -23,7 +25,7 @@ public class BibliotecaTest {
     public void shouldChekoutABook(){
         Biblioteca biblioteca = new Biblioteca();
 
-        boolean isCheckoutActual = biblioteca.checkoutBook("You");
+        boolean isCheckoutActual = biblioteca.checkoutResource("You", BOOK_OPTION);
 
         assertTrue(isCheckoutActual);
     }
@@ -32,7 +34,7 @@ public class BibliotecaTest {
     public void shouldNotChekoutABook(){
         Biblioteca biblioteca = new Biblioteca();
 
-        boolean isCheckoutActual = biblioteca.checkoutBook("dgadah");
+        boolean isCheckoutActual = biblioteca.checkoutResource("dgadah" , BOOK_OPTION);
 
         assertFalse(isCheckoutActual);
     }
@@ -42,7 +44,7 @@ public class BibliotecaTest {
         int numberBookExpected = 2;
         Biblioteca biblioteca = new Biblioteca();
 
-        biblioteca.checkoutBook("You");
+        biblioteca.checkoutResource("You", BOOK_OPTION);
         int numberBooksActual = biblioteca.getListResourceAvailable(1).size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
@@ -53,7 +55,7 @@ public class BibliotecaTest {
         int numberBookExpected = 3;
         Biblioteca biblioteca = new Biblioteca();
 
-        biblioteca.checkoutBook("Me");
+        biblioteca.checkoutResource("Me", BOOK_OPTION);
         int numberBooksActual = biblioteca.getListResourceAvailable(1).size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
@@ -155,7 +157,7 @@ public class BibliotecaTest {
     public void shouldNotChekoutAMovie(){
         Biblioteca biblioteca = new Biblioteca();
 
-        boolean isCheckoutActual = biblioteca.checkoutResource("MovieX",2);
+        boolean isCheckoutActual = biblioteca.checkoutResource("MovieX",MOVIE_OPTION);
 
         assertFalse(isCheckoutActual);
     }

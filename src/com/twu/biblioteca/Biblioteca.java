@@ -55,27 +55,16 @@ public class Biblioteca {
         return result;
     }
 
-//    Boolean checkoutBook(String book){
-//        Boolean isBookRemoved = false;
-//        for(Resource item: listBooksAvailable){
-//            if(item.getName().contains(book)){
-//                item.setAvailable(false);
-//                isBookRemoved = true;
-//            }
-//        }
-//        return isBookRemoved;
-//    }
-
 
     Boolean checkoutResource(String resource, int userOption){
-        Boolean isBookRemoved = false;
+        Boolean isResourceRemoved = false;
         for(Resource item: getListResourceAvailable(userOption)){
             if(item.getName().contains(resource)){
                 item.setAvailable(false);
-                isBookRemoved = true;
+                isResourceRemoved = true;
             }
         }
-        return isBookRemoved;
+        return isResourceRemoved;
     }
 
     Boolean returnBook(String book){

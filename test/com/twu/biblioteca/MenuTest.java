@@ -19,7 +19,7 @@ public class MenuTest {
         Boolean expected = false;
         Biblioteca biblioteca= new Biblioteca();
         Menu menu = new Menu(biblioteca);
-        Boolean actual = new Utililty().isValidOption("6", menu.getOptionsList());
+        Boolean actual = new Utililty().isValidOption("8", menu.getOptionsList());
         assertEquals(expected, actual);
     }
 
@@ -35,7 +35,7 @@ public class MenuTest {
     @Test
     public void shouldReturnFalseIfNotSelectOptionOfQuit() {
         Biblioteca biblioteca = new Biblioteca();
-        Boolean actual = new Menu(biblioteca).isOptionToQuit(5);
+        Boolean actual = new Menu(biblioteca).isOptionToQuit(6);
         assertFalse(actual);
     }
 }

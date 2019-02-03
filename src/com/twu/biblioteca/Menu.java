@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Menu {
     private List<String> optionsList;
+    private final int BOOK_OPTION = 1;
+    private final int MOVIE_OPTION = 2;
     private final int LIST_BOOK_OPTION = 1;
     private final int LIST_MOVIE_OPTION = 2;
     private final int CHECKOUT_BOOK_OPTION = 3;
@@ -43,15 +45,15 @@ public class Menu {
         int options = Integer.parseInt(option);
         switch (options){
             case LIST_BOOK_OPTION:
-                System.out.println(biblioteca.showResources(LIST_BOOK_OPTION));
+                System.out.println(biblioteca.showResources(BOOK_OPTION));
                 break;
             case LIST_MOVIE_OPTION:
-                System.out.println(biblioteca.showResources(LIST_MOVIE_OPTION));
+                System.out.println(biblioteca.showResources(MOVIE_OPTION));
                 break;
             case CHECKOUT_BOOK_OPTION:
                 System.out.println("\nPlease enter the name of the BOOK to CHECK-OUT:");
                 String bookToCheckOut = Utililty.readConsoleInput();
-                Boolean isBookRemoved = biblioteca.checkoutBook(bookToCheckOut);
+                Boolean isBookRemoved = biblioteca.checkoutResource(bookToCheckOut, BOOK_OPTION);
 //                    resource = new Resource();
 //                    Boolean isBookRemoved2 = resource.checkout(bookToCheckOut, getListResourceAvailable());
                 System.out.println(biblioteca.returnMessageCheckout(isBookRemoved));
@@ -59,7 +61,7 @@ public class Menu {
             case CHECKOUT_MOVIE_OPTION:
                 System.out.println("\nPlease enter the name of the MOVIE to CHECK-OUT:");
                 String movieToCheckOut = Utililty.readConsoleInput();
-                Boolean isMovieRemoved = biblioteca.checkoutResource(movieToCheckOut, CHECKOUT_MOVIE_OPTION);
+                Boolean isMovieRemoved = biblioteca.checkoutResource(movieToCheckOut, MOVIE_OPTION);
 //                    resource = new Resource();
 //                    Boolean isBookRemoved2 = resource.checkout(bookToCheckOut, getListResourceAvailable());
                 System.out.println(biblioteca.returnMessageCheckout(isMovieRemoved));
