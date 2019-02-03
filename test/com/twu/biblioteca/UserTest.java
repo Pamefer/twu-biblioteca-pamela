@@ -19,4 +19,11 @@ public class UserTest {
         String actual = user.getLibraryNumber();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void shouldReturnPassword(){
+        String expected = "pass123";
+        String actual = user.getPassword();
+        assertEquals(expected, actual);
+    }
 }
