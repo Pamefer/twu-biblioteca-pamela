@@ -8,9 +8,9 @@ public class UserObjects {
 
     public UserObjects() {
         this.usersList = new ArrayList<>();
-        this.usersList.add( new User("1", "1234"));
-        this.usersList.add( new User("2", "1234"));
-        this.usersList.add( new User("3", "1234"));
+        this.usersList.add( new User("1", "1234", false));
+        this.usersList.add( new User("2", "1234", false));
+        this.usersList.add( new User("3", "1234", false));
     }
 
     public List<User> getUsersList() {
@@ -22,8 +22,20 @@ public class UserObjects {
         for(User user: getUsersList()){
             if(libraryNumber.equals(user.getLibraryNumber()) && password.equals(user.getPassword())){
                 isLoginCorrect = true;
+                user.setStatusSession(true);
             }
         }
+        System.out.println(getUsersList());
         return isLoginCorrect;
     }
+
+    void activeUser(){
+        for(User user: usersList){
+            if(user.getStatusSession()){
+                System.out.println(user);
+            }
+        }
+    }
+
+
 }

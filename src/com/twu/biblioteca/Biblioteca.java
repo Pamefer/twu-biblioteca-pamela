@@ -8,11 +8,14 @@ public class Biblioteca {
     private List<Resource> listBooksAvailable;
     private List<Resource> listMoviesAvailable;
 
+    private UserObjects userObjects = new UserObjects();
+
     private final int LIST_BOOK_OPTION = 1;
     private final int DEFAULT_OPTION = 1;
 
-    Biblioteca(){
+    Biblioteca(UserObjects userObjects){
         this.resourcesList = new ArrayList<>();
+        this.userObjects = userObjects;
         this.resourcesList.add(new Book("The Japanese girl", true, "1971", "Winston Graham"));
         this.resourcesList.add(new Book("You",true, "2015", "Pamela"));
         this.resourcesList.add(new Book("Take me out",true, "1987", "Gianella"));
@@ -66,8 +69,7 @@ public class Biblioteca {
             if(item.getName().contains(resource)){
                 item.setAvailable(false);
                 isResourceRemoved = true;
-
-
+                userObjects.activeUser();
 
             }
         }

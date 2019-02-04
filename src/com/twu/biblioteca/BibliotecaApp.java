@@ -13,7 +13,7 @@ public class BibliotecaApp {
         Boolean successLogin = user.login(libraryNumberInput,passwordInput);
 
         if(successLogin){
-            Biblioteca biblioteca = new Biblioteca();
+            Biblioteca biblioteca = new Biblioteca(user);
             String firstGreeting = biblioteca.welcomeMessage();
             System.out.println(firstGreeting);
 
