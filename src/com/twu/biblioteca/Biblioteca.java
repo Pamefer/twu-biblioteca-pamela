@@ -9,6 +9,8 @@ public class Biblioteca {
     private List<Resource> listMoviesAvailable;
 
     private UserObjects userObjects = new UserObjects();
+    private ReservationObjects reservationObjects;
+    private List<Reservation> reservationList;
 
     private final int LIST_BOOK_OPTION = 1;
     private final int DEFAULT_OPTION = 1;
@@ -16,6 +18,8 @@ public class Biblioteca {
     Biblioteca(UserObjects userObjects){
         this.resourcesList = new ArrayList<>();
         this.userObjects = userObjects;
+        this.reservationList = new ArrayList<>();
+        this.reservationObjects = new ReservationObjects(this.reservationList);
         this.resourcesList.add(new Book("The Japanese girl", true, "1971", "Winston Graham"));
         this.resourcesList.add(new Book("You",true, "2015", "Pamela"));
         this.resourcesList.add(new Book("Take me out",true, "1987", "Gianella"));
@@ -65,11 +69,19 @@ public class Biblioteca {
 
     Boolean checkoutResource(String resource, int userOption){
         Boolean isResourceRemoved = false;
+        Book f;
         for(Resource item: getListResourceAvailable(userOption)){
             if(item.getName().contains(resource)){
                 item.setAvailable(false);
                 isResourceRemoved = true;
-                userObjects.activeUser();
+                if(item instanceof Book){
+                    //f = new Book(item.getName(), item.getAvailable(), item.getYear(), ((Book) item).getAuthor());
+                    reservationList.add(new Reservation(userObjects.activeUser(), item));
+
+                    reservationObjects.getReservationList();
+                    //System.out.println(reservationList);
+                }
+
 
             }
         }
