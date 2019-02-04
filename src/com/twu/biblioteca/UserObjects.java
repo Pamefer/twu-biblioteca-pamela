@@ -25,16 +25,17 @@ public class UserObjects {
                 user.setStatusSession(true);
             }
         }
-        System.out.println(getUsersList());
         return isLoginCorrect;
     }
 
-    void activeUser(){
+    User activeUser(){
+        User userPerson = null;
         for(User user: usersList){
             if(user.getStatusSession()){
-                System.out.println(user);
+                userPerson = user;
             }
         }
+        return  userPerson;
     }
 
 
