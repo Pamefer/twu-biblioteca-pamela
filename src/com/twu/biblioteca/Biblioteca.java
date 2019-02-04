@@ -13,7 +13,6 @@ public class Biblioteca {
     private List<Reservation> reservationList;
 
     private final int LIST_BOOK_OPTION = 1;
-    private final int DEFAULT_OPTION = 1;
 
     Biblioteca(UserObjects userObjects){
         this.resourcesList = new ArrayList<>();
@@ -26,11 +25,14 @@ public class Biblioteca {
         this.resourcesList.add(new Movie("Movie1", true, "1971", "Winston Graham", "3"));
         this.resourcesList.add(new Movie("Movie3",true, "2015", "Pamela","4"));
         this.resourcesList.add(new Movie("Movie3",true, "1987", "Gianella","5"));
-        getListResourceAvailable(DEFAULT_OPTION);
-
     }
 
-    public List<Resource> getListResourceAvailable(int userOption) {
+    String welcomeMessage(){
+        String greeting = "\nWelcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
+        return greeting;
+    }
+
+    List<Resource> getListResourceAvailable(int userOption) {
         List<Resource> listOfTypeOfResource = null;
         createListsOfResourcesAvailable();
         listOfTypeOfResource = (userOption == LIST_BOOK_OPTION) ? listBooksAvailable : listMoviesAvailable;
@@ -48,11 +50,6 @@ public class Biblioteca {
                 listMoviesAvailable.add(resource);
             }
         }
-    }
-
-    String welcomeMessage(){
-         String greeting = "\nWelcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
-         return greeting;
     }
 
     String showResources(int userOption){

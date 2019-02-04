@@ -34,4 +34,5 @@ public class User {
         return String.format("|%20s|%20s|%20s|\n", getLibraryNumber(), getPassword(), getStatusSession());
     }
 
+
 }
