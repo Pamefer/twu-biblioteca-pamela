@@ -17,7 +17,6 @@ public class Reservation {
         return resource;
     }
 
-
     public String toString(){
         return String.format("Library Number: %5s\nBook:%20s", getUser().getLibraryNumber(), getResource());
     }

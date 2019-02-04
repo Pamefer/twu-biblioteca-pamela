@@ -23,7 +23,7 @@ public class BibliotecaTest {
 
     @Test
     public void shouldReturnWelcomeMessage() {
-        String expected = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
+        String expected = "\nWelcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
         String actual = new Biblioteca(userObject).welcomeMessage();
         assertEquals(expected, actual);
     }

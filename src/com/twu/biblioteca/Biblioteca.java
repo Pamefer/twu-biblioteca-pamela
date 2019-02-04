@@ -8,7 +8,7 @@ public class Biblioteca {
     private List<Resource> listBooksAvailable;
     private List<Resource> listMoviesAvailable;
 
-    private UserObjects userObjects = new UserObjects();
+    private UserObjects userObjects;
     private ReservationObjects reservationObjects;
     private List<Reservation> reservationList;
 
@@ -28,9 +28,6 @@ public class Biblioteca {
         this.resourcesList.add(new Movie("Movie3",true, "1987", "Gianella","5"));
         getListResourceAvailable(DEFAULT_OPTION);
 
-    }
-    public List<Resource> getResourcesList() {
-        return resourcesList;
     }
 
     public List<Resource> getListResourceAvailable(int userOption) {
@@ -54,7 +51,7 @@ public class Biblioteca {
     }
 
     String welcomeMessage(){
-         String greeting = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
+         String greeting = "\nWelcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
          return greeting;
     }
 
@@ -69,20 +66,12 @@ public class Biblioteca {
 
     Boolean checkoutResource(String resource, int userOption){
         Boolean isResourceRemoved = false;
-        Book f;
         for(Resource item: getListResourceAvailable(userOption)){
             if(item.getName().contains(resource)){
                 item.setAvailable(false);
                 isResourceRemoved = true;
-                if(item instanceof Book){
-                    //f = new Book(item.getName(), item.getAvailable(), item.getYear(), ((Book) item).getAuthor());
-                    reservationList.add(new Reservation(userObjects.activeUser(), item));
-
-                    reservationObjects.getReservationList();
-                    //System.out.println(reservationList);
-                }
-
-
+                reservationList.add(new Reservation(userObjects.activeUser(), item));
+                reservationObjects.getReservationList();
             }
         }
         return isResourceRemoved;

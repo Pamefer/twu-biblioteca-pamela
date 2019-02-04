@@ -5,10 +5,10 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         /* Get Login data of user */
         UserObjects user = new UserObjects();
-        System.out.printf("^^^^^Login^^^^^\n");
-        System.out.println("Enter library number:\n");
+        System.out.printf(" ------------ Login ------------ \n");
+        System.out.println("Enter library number:");
         String libraryNumberInput = Utililty.readConsoleInput();
-        System.out.println("Enter password:\n");
+        System.out.println("\nEnter password:");
         String passwordInput = Utililty.readConsoleInput();
         Boolean successLogin = user.login(libraryNumberInput,passwordInput);
 

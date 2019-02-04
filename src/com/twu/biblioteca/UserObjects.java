@@ -37,6 +37,4 @@ public class UserObjects {
         }
         return  userPerson;
     }
-
-
 }
