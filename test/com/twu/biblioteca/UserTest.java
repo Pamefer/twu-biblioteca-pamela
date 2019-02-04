@@ -11,7 +11,7 @@ public class UserTest {
 
     @Before
     public void chargeUserData(){
-         user = new User( "000-0001", "1234");
+         user = new User( "000-0001", "1234", false);
          userObjects = new UserObjects();
     }
 
@@ -26,6 +26,13 @@ public class UserTest {
     public void shouldReturnPassword(){
         String expected = "1234";
         String actual = user.getPassword();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldReturnStatusSession(){
+        Boolean expected = false;
+        Boolean actual = user.getStatusSession();
         assertEquals(expected, actual);
     }
 
