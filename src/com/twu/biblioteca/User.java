@@ -5,7 +5,6 @@ import java.util.List;
 public class User {
     private String libraryNumber;
     private String password;
-    private List<User> usersList;
 
     public User(String libraryNumber, String password) {
         this.libraryNumber = libraryNumber;
@@ -20,16 +19,4 @@ public class User {
         return password;
     }
 
-    public List<User> getUsersList() {
-        return usersList;
-    }
-
-    Boolean login(String libraryNumber, String password){
-        for(User user: usersList){
-            if(!libraryNumber.equals(user.getLibraryNumber()) && !password.equals(user.getPassword())){
-                return false;
-            }
-        }
-        return true;
-    }
 }

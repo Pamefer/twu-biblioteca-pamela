@@ -66,6 +66,9 @@ public class Biblioteca {
             if(item.getName().contains(resource)){
                 item.setAvailable(false);
                 isResourceRemoved = true;
+
+
+
             }
         }
         return isResourceRemoved;

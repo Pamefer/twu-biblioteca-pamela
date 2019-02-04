@@ -3,15 +3,16 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class UserTest {
     User user;
+    UserObjects userObjects;
 
     @Before
     public void chargeUserData(){
          user = new User( "000-0001", "1234");
+         userObjects = new UserObjects();
     }
 
     @Test
@@ -23,20 +24,26 @@ public class UserTest {
 
     @Test
     public void shouldReturnPassword(){
-        String expected = "pass123";
+        String expected = "1234";
         String actual = user.getPassword();
         assertEquals(expected, actual);
     }
 
-//    @Test
-//    public  void shouldReturnTrueIfSuccessLogin(){
-//        String libraryNumber = "000-0001";
-//        String password = "1234";
-//        System.out.println(";;;;;;");
-//        Boolean actual = user.login(libraryNumber, password);
-//        System.out.println(actual+"kkk");
-//        assertTrue(actual);
-//    }
+    @Test
+    public  void shouldReturnTrueIfSuccessLogin(){
+        String libraryNumber = "1";
+        String password = "1234";
+        Boolean actual = userObjects.login(libraryNumber, password);
+        assertTrue(actual);
+    }
+
+    @Test
+    public  void shouldReturnFalseIfIncorrectLogin(){
+        String libraryNumber = "000-0007";
+        String password = "1234";
+        Boolean actual = userObjects.login(libraryNumber, password);
+        assertFalse(actual);
+    }
 
 
 }

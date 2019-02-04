@@ -8,9 +8,9 @@ public class UserObjects {
 
     public UserObjects() {
         this.usersList = new ArrayList<>();
-        this.usersList.add( new User("000-0001", "1234"));
-        this.usersList.add( new User("000-0002", "1234"));
-        this.usersList.add( new User("000-0003", "1234"));
+        this.usersList.add( new User("1", "1234"));
+        this.usersList.add( new User("2", "1234"));
+        this.usersList.add( new User("3", "1234"));
     }
 
     public List<User> getUsersList() {
@@ -18,11 +18,12 @@ public class UserObjects {
     }
 
     Boolean login(String libraryNumber, String password){
-        for(User user: usersList){
-            if(!libraryNumber.equals(user.getLibraryNumber()) && !password.equals(user.getPassword())){
-                return false;
+        Boolean isLoginCorrect = false;
+        for(User user: getUsersList()){
+            if(libraryNumber.equals(user.getLibraryNumber()) && password.equals(user.getPassword())){
+                isLoginCorrect = true;
             }
         }
-        return true;
+        return isLoginCorrect;
     }
 }
