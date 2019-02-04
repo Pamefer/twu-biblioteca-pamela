@@ -1,23 +1,16 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class User {
-    private String libraryNumber;
-    private String password;
+public class UserObjects {
     private List<User> usersList;
 
-    public User(String libraryNumber, String password) {
-        this.libraryNumber = libraryNumber;
-        this.password = password;
-    }
-
-    public String getLibraryNumber() {
-        return libraryNumber;
-    }
-
-    public String getPassword() {
-        return password;
+    public UserObjects() {
+        this.usersList = new ArrayList<>();
+        this.usersList.add( new User("000-0001", "1234"));
+        this.usersList.add( new User("000-0002", "1234"));
+        this.usersList.add( new User("000-0003", "1234"));
     }
 
     public List<User> getUsersList() {

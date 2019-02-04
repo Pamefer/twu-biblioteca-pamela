@@ -20,6 +20,10 @@ public class Biblioteca {
         this.resourcesList.add(new Movie("Movie3",true, "2015", "Pamela","4"));
         this.resourcesList.add(new Movie("Movie3",true, "1987", "Gianella","5"));
         getListResourceAvailable(DEFAULT_OPTION);
+
+    }
+    public List<Resource> getResourcesList() {
+        return resourcesList;
     }
 
     public List<Resource> getListResourceAvailable(int userOption) {
@@ -32,7 +36,7 @@ public class Biblioteca {
     void createListsOfResourcesAvailable(){
         listBooksAvailable = new ArrayList<>();
         listMoviesAvailable = new ArrayList<>();
-        for (Resource resource: resourcesList){
+            for (Resource resource: resourcesList){
             if(resource.getAvailable() && isInstanceOfBook(resource)) {
                 listBooksAvailable.add(resource);
             }
