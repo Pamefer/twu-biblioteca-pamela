@@ -23,8 +23,8 @@ public class ReservationTest {
         assertTrue(reservation.getUser() instanceof User);
     }
 
-    @Test
-    public void shouldReturnBookObject(){
-        assertTrue(reservation.getBook() instanceof Book);
-    }
+//    @Test
+//    public void shouldReturnBookObject(){
+//        assertTrue(reservation.getBook() instanceof Book);
+//    }
 }
