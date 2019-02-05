@@ -11,7 +11,7 @@ public class UserTest {
 
     @Before
     public void chargeUserData(){
-         user = new User( "000-0001", "1234", false);
+         user = new User( "000-0001", "1234", false, "Jony", "jony@gmail.com", "0989906930");
          userObjects = new UserObjects();
     }
 
@@ -37,6 +37,27 @@ public class UserTest {
     }
 
     @Test
+    public void shouldReturnName(){
+        String expected = "Jony";
+        String actual = user.getName();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldReturnMail(){
+        String expected = "jony@gmail.com";
+        String actual = user.getMail();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldReturnPhone(){
+        String expected = "0989906930";
+        String actual = user.getPhone);
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public  void shouldReturnTrueIfSuccessLogin(){
         String libraryNumber = "1";
         String password = "1234";
@@ -51,6 +72,8 @@ public class UserTest {
         Boolean actual = userObjects.login(libraryNumber, password);
         assertFalse(actual);
     }
+
+
 
 
 }
