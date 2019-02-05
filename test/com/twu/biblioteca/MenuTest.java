@@ -7,43 +7,44 @@ import static org.junit.Assert.assertFalse;
 
 public class MenuTest {
     private UserObjects userObject;
+    private Biblioteca biblioteca;
+    private Utililty utililty;
+    private Menu menu;
+
     @Before
     public void chargeUserObject(){
         userObject = new UserObjects();
+        biblioteca = new Biblioteca();
+        utililty = new Utililty();
         userObject.login("1","1234");
+        menu = new Menu(biblioteca, userObject);
     }
 
     @Test
     public void shouldReturnValidOptionMenu(){
         Boolean expected = true;
-        Biblioteca biblioteca= new Biblioteca(userObject);
-        Menu menu = new Menu(biblioteca);
-        Boolean actual = new Utililty().isValidOption("2", menu.getOptionsList());
+        System.out.println( menu.getOptionsList());
+        Boolean actual = utililty.isValidOption("2", menu.getOptionsList());
         assertEquals(expected, actual);
     }
 
     @Test
     public void shouldReturnInvalidOptionMenuOutOfRange(){
         Boolean expected = false;
-        Biblioteca biblioteca= new Biblioteca(userObject);
-        Menu menu = new Menu(biblioteca);
-        Boolean actual = new Utililty().isValidOption("8", menu.getOptionsList());
+        Boolean actual = utililty.isValidOption("8", menu.getOptionsList());
         assertEquals(expected, actual);
     }
 
     @Test
     public void shouldReturnInvalidOptionMenuNotNumber(){
         Boolean expected = false;
-        Biblioteca biblioteca= new Biblioteca(userObject);
-        Menu menu = new Menu(biblioteca);
-        Boolean actual = new Utililty().isValidOption("jjjjj", menu.getOptionsList());
+        Boolean actual = utililty.isValidOption("jjjjj", menu.getOptionsList());
         assertEquals(expected, actual);
     }
 
     @Test
     public void shouldReturnFalseIfNotSelectOptionOfQuit() {
-        Biblioteca biblioteca = new Biblioteca(userObject);
-        Boolean actual = new Menu(biblioteca).isOptionToQuit(6);
+        Boolean actual = menu.isOptionToQuit(6);
         assertFalse(actual);
     }
 }

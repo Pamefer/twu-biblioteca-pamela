@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BibliotecaApp {
 
     public static void main(String[] args) {
@@ -13,11 +16,11 @@ public class BibliotecaApp {
         Boolean successLogin = user.login(libraryNumberInput,passwordInput);
 
         if(successLogin){
-            Biblioteca biblioteca = new Biblioteca(user);
+            Biblioteca biblioteca = new Biblioteca();
             String firstGreeting = biblioteca.welcomeMessage();
             System.out.println(firstGreeting);
 
-            Menu menu = new Menu(biblioteca);
+            Menu menu = new Menu(biblioteca, user);
             menu.readInputOption();
         }else{
             System.out.println("Incorrect login");
