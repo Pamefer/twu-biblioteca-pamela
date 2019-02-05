@@ -53,7 +53,7 @@ public class UserTest {
     @Test
     public void shouldReturnPhone(){
         String expected = "0989906930";
-        String actual = user.getPhone);
+        String actual = user.getPhone();
         assertEquals(expected, actual);
     }
 

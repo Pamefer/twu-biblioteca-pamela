@@ -13,7 +13,7 @@ public class ReservationTest {
 
     @Before
     public void chargeReservationData(){
-        user = new User( "000-0001", "1234", false);
+        user = new User( "000-0001", "1234", false, "Jony", "jon@gmail.com", "0989906930");
         book = new Book("Flowers", true, "1678", "Radnedy Cajas");
         reservation = new Reservation(user, book);
     }

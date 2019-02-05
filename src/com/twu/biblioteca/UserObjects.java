@@ -8,9 +8,9 @@ public class UserObjects {
 
     public UserObjects() {
         this.usersList = new ArrayList<>();
-        this.usersList.add( new User("1", "1234", false));
-        this.usersList.add( new User("2", "1234", false));
-        this.usersList.add( new User("3", "1234", false));
+        this.usersList.add( new User("1", "1234", false, "Jony", "jon@gmail.com", "0989906930"));
+        this.usersList.add( new User("2", "1234", false,"jose", "jose@gmail.com", "78658437563"));
+        this.usersList.add( new User("3", "1234", false, "pancha", "pancha@gmail.com", "634353455"));
     }
 
     public List<User> getUsersList() {
