@@ -35,17 +35,5 @@ public class Resource {
     public String getYear() {
         return year;
     }
-
-    public Boolean checkout(String book, List<Resource> listBooksAvailable){
-        Boolean isBookRemoved = false;
-        for(Resource resource: listBooksAvailable){
-            if(resource.getName().contains(book)){
-                resource.setAvailable(false);
-                isBookRemoved = true;
-            }
-        }
-        return isBookRemoved;
-    }
-
 }
 

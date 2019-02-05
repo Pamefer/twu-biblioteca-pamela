@@ -16,10 +16,6 @@ public class Menu {
     private Biblioteca biblioteca;
     private ResourceObjects resourceObjects;
 
-    public Menu() {
-
-    }
-
     public Menu(Biblioteca biblioteca, UserObjects userObjects) {
         this.optionsList =  new ArrayList<>();
         this.biblioteca = biblioteca;
@@ -33,7 +29,7 @@ public class Menu {
     }
 
 
-    void readInputOption(){
+    public void readInputOption(){
         System.out.println("\n***** Select an option *****");
         String option;
         do{
@@ -46,7 +42,7 @@ public class Menu {
         }while (isOptionToQuit(Integer.parseInt(option)));
     }
 
-     void selectOption(String option){
+     private void selectOption(String option){
         int options = Integer.parseInt(option);
 
         switch (options){
@@ -60,16 +56,12 @@ public class Menu {
                 System.out.println("\nPlease enter the name of the BOOK to CHECK-OUT:");
                 String bookToCheckOut = Utililty.readConsoleInput();
                 Boolean isBookRemoved = resourceObjects.checkoutResource(bookToCheckOut, BOOK_OPTION);
-//                    resource = new Resource();
-//                    Boolean isBookRemoved2 = resource.checkout(bookToCheckOut, getListResourceAvailable());
                 System.out.println(biblioteca.returnMessageCheckout(isBookRemoved));
                 break;
             case CHECKOUT_MOVIE_OPTION:
                 System.out.println("\nPlease enter the name of the MOVIE to CHECK-OUT:");
                 String movieToCheckOut = Utililty.readConsoleInput();
                 Boolean isMovieRemoved = resourceObjects.checkoutResource(movieToCheckOut, MOVIE_OPTION);
-//                    resource = new Resource();
-//                    Boolean isBookRemoved2 = resource.checkout(bookToCheckOut, getListResourceAvailable());
                 System.out.println(biblioteca.returnMessageCheckout(isMovieRemoved));
                 break;
             case RETURN_BOOK_OPTION:

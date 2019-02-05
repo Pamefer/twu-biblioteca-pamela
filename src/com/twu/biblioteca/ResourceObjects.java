@@ -12,8 +12,6 @@ public class ResourceObjects {
     private ReservationObjects reservationObjects;
     private List<Reservation> reservationList;
 
-    public ResourceObjects(){}
-
     public ResourceObjects(List<Resource> resourcesList,UserObjects userObjects) {
 
         this.resourcesList = resourcesList;
@@ -26,14 +24,14 @@ public class ResourceObjects {
         return resourcesList;
     }
 
-    List<Resource> getListResourceAvailable(int userOption) {
+     List<Resource> getListResourceAvailable(int userOption) {
         List<Resource> listOfTypeOfResource = null;
         createListsOfResourcesAvailable();
         listOfTypeOfResource = (userOption == 1) ? listBooksAvailable : listMoviesAvailable;
         return listOfTypeOfResource;
     }
 
-    void createListsOfResourcesAvailable(){
+    private void createListsOfResourcesAvailable(){
         listBooksAvailable = new ArrayList<>();
         listMoviesAvailable = new ArrayList<>();
         for (Resource resource: resourcesList){
@@ -46,7 +44,7 @@ public class ResourceObjects {
         }
     }
 
-    String showResources(int userOption){
+    public String showResources(int userOption){
         String result = "";
         for (Resource resource: getListResourceAvailable(userOption)){
             result += resource;
