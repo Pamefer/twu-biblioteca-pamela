@@ -15,7 +15,7 @@ public class Utililty {
         boolean isValid = true;
         try{
             int options = Integer.parseInt(option);
-            if(options == 0 || options > optionsList.size() ){
+            if(options > optionsList.size() ){
                 isValid = false;
                 System.out.println("Please, select a valid option!");
             }

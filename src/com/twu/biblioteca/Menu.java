@@ -12,9 +12,12 @@ public class Menu {
     private final int CHECKOUT_BOOK_OPTION = 3;
     private final int CHECKOUT_MOVIE_OPTION = 4;
     private final int RETURN_BOOK_OPTION = 5;
-    private final int QUIT_OPTION = 6;
+    private final int VIEW_RESERVATIONS_OPTION = 6;
+    private final int QUIT_OPTION = 0;
     private Biblioteca biblioteca;
     private ResourceObjects resourceObjects;
+    private ReservationObjects reservationObjects;
+
 
     public Menu(Biblioteca biblioteca, UserObjects userObjects) {
         this.optionsList =  new ArrayList<>();
@@ -25,7 +28,8 @@ public class Menu {
         optionsList.add("3. Check out Books");
         optionsList.add("4. Check out Movies");
         optionsList.add("5. Return Books");
-        optionsList.add("6. Quit");
+        optionsList.add("5. View reservations");
+        optionsList.add("0. Quit");
     }
 
 
@@ -70,6 +74,9 @@ public class Menu {
                 Boolean isBookReturn= resourceObjects.returnBook(bookToReturn);
                 System.out.println(biblioteca.returnMessageReturn(isBookReturn));
                 break;
+            case VIEW_RESERVATIONS_OPTION:
+                reservationObjects.getReservationList();
+
             case QUIT_OPTION:
                 System.out.println("Exit");
                 System.exit(0);

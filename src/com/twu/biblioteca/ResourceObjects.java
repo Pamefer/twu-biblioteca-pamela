@@ -58,8 +58,10 @@ public class ResourceObjects {
             if(item.getName().contains(resource)){
                 item.setAvailable(false);
                 isResourceRemoved = true;
+
                 reservationList.add(new Reservation(userObjects.activeUser(), item));
                 reservationObjects.getReservationList();
+
             }
         }
         return isResourceRemoved;
