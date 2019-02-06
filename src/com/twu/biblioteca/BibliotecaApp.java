@@ -6,13 +6,25 @@ import java.util.List;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        Biblioteca biblioteca = new Biblioteca(chargeBibliotecaProducts(), chargeUsers());
-        String firstGreeting = biblioteca.welcomeMessage();
-        System.out.println(firstGreeting);
-        Menu menu = new Menu(biblioteca);
-        menu.readInputOption();
+        UsersSet usersSet = new UsersSet();
+        usersSet.chargeUsers(chargeUsers());
 
+        System.out.printf(" ------------ Login ------------ \n");
+        System.out.println("Enter library number:");
+        String libraryNumberInput = Utililty.readConsoleInput();
+        System.out.println("\nEnter password:");
+        String passwordInput = Utililty.readConsoleInput();
+        Boolean successLogin = usersSet.login(libraryNumberInput,passwordInput);
 
+        if(successLogin){
+            Biblioteca biblioteca = new Biblioteca(chargeBibliotecaProducts());
+            String firstGreeting = biblioteca.welcomeMessage();
+            System.out.println(firstGreeting);
+            Menu menu = new Menu(biblioteca);
+            menu.readInputOption();
+        }else{
+            System.out.println("Incorrect login");
+        }
     }
 
     public static List<BibliotecaProduct> chargeBibliotecaProducts(){

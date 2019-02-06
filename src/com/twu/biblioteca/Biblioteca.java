@@ -5,7 +5,6 @@ import java.util.List;
 public class Biblioteca {
 
     private List<BibliotecaProduct> bibliotecaProductList;
-    private List<User> usersList;
 
     private List<BibliotecaProduct> listBooksAvailable;
     private List<BibliotecaProduct> listMoviesAvailable;
@@ -13,9 +12,8 @@ public class Biblioteca {
     private final int LIST_BOOK_OPTION = 1;
     private final int DEFAULT_OPTION = 1;
 
-    Biblioteca(List<BibliotecaProduct> resourcesList, List<User> usersList ){
+    Biblioteca(List<BibliotecaProduct> resourcesList){
         this.bibliotecaProductList = resourcesList;
-        this.usersList = usersList;
     }
 
     public List<BibliotecaProduct> getListResourceAvailable(int userOption) {
@@ -58,6 +56,7 @@ public class Biblioteca {
             if(item.getName().contains(resource)){
                 item.setAvailable(false);
                 isResourceRemoved = true;
+
             }
         }
         return isResourceRemoved;
