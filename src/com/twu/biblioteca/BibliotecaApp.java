@@ -10,10 +10,10 @@ public class BibliotecaApp {
         usersSet.chargeUsers(chargeUsers());
         Biblioteca biblioteca = new Biblioteca(chargeBibliotecaProducts());
 
-        System.out.printf(" ------------ Login ------------ \n");
-        System.out.println("Enter library number:");
+        Utililty.printOutString(" ------------ Login ------------ \n");
+        Utililty.printOutString("Enter library number:");
         String libraryNumberInput = Utililty.readConsoleInput();
-        System.out.println("\nEnter password:");
+        Utililty.printOutString("\nEnter password:");
         String passwordInput = Utililty.readConsoleInput();
         //Boolean successLogin = usersSet.login(libraryNumberInput,passwordInput);
         User u = usersSet.login(libraryNumberInput,passwordInput);
@@ -21,11 +21,11 @@ public class BibliotecaApp {
         if(u != null){
 
             String firstGreeting = biblioteca.welcomeMessage();
-            System.out.println(firstGreeting);
+            Utililty.printOutString(firstGreeting);
             Menu menu = new Menu(biblioteca, u);
             menu.readInputOption();
         }else{
-            System.out.println("Incorrect login");
+            Utililty.printOutString("Incorrect login");
         }
         biblioteca.getListBibliotecaProductsRented();
     }

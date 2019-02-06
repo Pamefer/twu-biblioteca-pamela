@@ -10,15 +10,14 @@ public class Biblioteca {
     private List<BibliotecaProduct> listMoviesAvailable;
 
     private final int LIST_BOOK_OPTION = 1;
-    private final int DEFAULT_OPTION = 1;
 
-    Biblioteca(List<BibliotecaProduct> resourcesList){
-        this.bibliotecaProductList = resourcesList;
+    Biblioteca(List<BibliotecaProduct> bibliotecaProductList){
+        this.bibliotecaProductList = bibliotecaProductList;
     }
 
-    public List<BibliotecaProduct> getListResourceAvailable(int userOption) {
+    public List<BibliotecaProduct> getListBibliotecaProductAvailable(int userOption) {
         List<BibliotecaProduct> listOfTypeOfBibliotecaProduct = null;
-        createListsOfResourcesAvailable();
+        createListsOfProductAvailable();
         listOfTypeOfBibliotecaProduct = (userOption == LIST_BOOK_OPTION) ? listBooksAvailable : listMoviesAvailable;
         return listOfTypeOfBibliotecaProduct;
     }
@@ -34,7 +33,7 @@ public class Biblioteca {
     }
 
 
-    void createListsOfResourcesAvailable(){
+    void createListsOfProductAvailable(){
         listBooksAvailable = new ArrayList<>();
         listMoviesAvailable = new ArrayList<>();
         for (BibliotecaProduct bibliotecaProduct : bibliotecaProductList){
@@ -52,18 +51,18 @@ public class Biblioteca {
          return greeting;
     }
 
-    String showResources(int userOption){
+    String showBibliotecaProduct(int userOption){
         String result = "";
-        for (BibliotecaProduct bibliotecaProduct : getListResourceAvailable(userOption)){
+        for (BibliotecaProduct bibliotecaProduct : getListBibliotecaProductAvailable(userOption)){
             result += bibliotecaProduct;
         }
         return result;
     }
 
 
-    Boolean checkoutResource(String resource, int userOption, User user){
+    Boolean checkoutBibliotecaProduct(String resource, int userOption, User user){
         Boolean isResourceRemoved = false;
-        for(BibliotecaProduct item: getListResourceAvailable(userOption)){
+        for(BibliotecaProduct item: getListBibliotecaProductAvailable(userOption)){
             if(item.getName().contains(resource)){
                 item.setAvailable(false);
                 item.setRentedBy(user);
@@ -73,7 +72,7 @@ public class Biblioteca {
         return isResourceRemoved;
     }
 
-    Boolean returnBook(String book){
+    Boolean returnBibliotecaProduct(String book){
         Boolean isBookReturned = false;
         for(BibliotecaProduct item: bibliotecaProductList){
             if(item.getName().contains(book) && !item.getAvailable()) {

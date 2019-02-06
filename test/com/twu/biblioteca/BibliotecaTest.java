@@ -55,29 +55,29 @@ public class BibliotecaTest {
 
     @Test
     public void shouldChekoutABook(){
-        boolean isCheckoutActual = biblioteca.checkoutResource("You", BOOK_OPTION, user);
+        boolean isCheckoutActual = biblioteca.checkoutBibliotecaProduct("You", BOOK_OPTION, user);
         assertTrue(isCheckoutActual);
     }
 
     @Test
     public void shouldNotChekoutABook(){
-        boolean isCheckoutActual = biblioteca.checkoutResource("gdahjda" , BOOK_OPTION, user);
+        boolean isCheckoutActual = biblioteca.checkoutBibliotecaProduct("gdahjda" , BOOK_OPTION, user);
         assertFalse(isCheckoutActual);
     }
 
     @Test
     public void shouldBeOneBookLessFromAllBooksIfCheckOut(){
         int numberBookExpected = 2;
-        biblioteca.checkoutResource("You", BOOK_OPTION, user);
-        int numberBooksActual = biblioteca.getListResourceAvailable(1).size();
+        biblioteca.checkoutBibliotecaProduct("You", BOOK_OPTION, user);
+        int numberBooksActual = biblioteca.getListBibliotecaProductAvailable(1).size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
 
     @Test
     public void shouldNotBeOneBookLessFromAvailableBooksIfBookNotExist(){
         int numberBookExpected = 3;
-        biblioteca.checkoutResource("Me", BOOK_OPTION, user);
-        int numberBooksActual = biblioteca.getListResourceAvailable(1).size();
+        biblioteca.checkoutBibliotecaProduct("Me", BOOK_OPTION, user);
+        int numberBooksActual = biblioteca.getListBibliotecaProductAvailable(1).size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
 
@@ -101,15 +101,15 @@ public class BibliotecaTest {
 
     @Test
     public void shouldNotReturnABook(){
-        boolean isReturnActual = biblioteca.returnBook("Adasdasd");
+        boolean isReturnActual = biblioteca.returnBibliotecaProduct("Adasdasd");
         assertFalse(isReturnActual);
     }
 
     @Test
     public void shouldBeOneBookMoreFromAvailableBooksIfIsReturned(){
         int numberBookExpected = 3;
-        biblioteca.returnBook("You");
-        int numberBooksActual = biblioteca.getListResourceAvailable(1).size();
+        biblioteca.returnBibliotecaProduct("You");
+        int numberBooksActual = biblioteca.getListBibliotecaProductAvailable(1).size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
 
@@ -134,15 +134,15 @@ public class BibliotecaTest {
 
     @Test
     public void shouldNotChekoutAMovie(){
-        boolean isCheckoutActual = biblioteca.checkoutResource("MovieX", MOVIE_OPTION, user);
+        boolean isCheckoutActual = biblioteca.checkoutBibliotecaProduct("MovieX", MOVIE_OPTION, user);
         assertFalse(isCheckoutActual);
     }
 
     @Test
     public void shouldBeOneMovieLessFromAllMoviesIfCheckOut(){
         int numberMoviesExpected = 2;
-        biblioteca.checkoutResource("Movie1", MOVIE_OPTION, user);
-        int numberMoviesActual = biblioteca.getListResourceAvailable(MOVIE_OPTION).size();
+        biblioteca.checkoutBibliotecaProduct("Movie1", MOVIE_OPTION, user);
+        int numberMoviesActual = biblioteca.getListBibliotecaProductAvailable(MOVIE_OPTION).size();
         assertEquals(numberMoviesExpected, numberMoviesActual);
     }
 
@@ -150,8 +150,8 @@ public class BibliotecaTest {
     @Test
     public void shouldNotBeOneMovieLessFromAvailableMoviesIfMovieNotExist(){
         int numberMoviesExpected = 3;
-        biblioteca.checkoutResource("MovieX", MOVIE_OPTION, user);
-        int numberMoviesActual = biblioteca.getListResourceAvailable(MOVIE_OPTION).size();
+        biblioteca.checkoutBibliotecaProduct("MovieX", MOVIE_OPTION, user);
+        int numberMoviesActual = biblioteca.getListBibliotecaProductAvailable(MOVIE_OPTION).size();
         assertEquals(numberMoviesExpected, numberMoviesActual);
     }
 

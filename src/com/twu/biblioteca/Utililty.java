@@ -33,4 +33,8 @@ public class Utililty {
         }
         return result;
     }
+
+    static void printOutString(String text){
+        System.out.println(text);
+    }
 }
