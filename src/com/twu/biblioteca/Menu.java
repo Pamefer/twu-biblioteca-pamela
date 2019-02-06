@@ -59,20 +59,17 @@ public class Menu {
             case CHECKOUT_BOOK_OPTION:
                 Utililty.printOutString("\nPlease enter the name of the BOOK to CHECK-OUT:");
                 String bookToCheckOut = Utililty.readConsoleInput();
-                Boolean isBookRemoved = biblioteca.checkoutBibliotecaProduct(bookToCheckOut, BOOK_OPTION, user);
-                Utililty.printOutString(biblioteca.returnMessageCheckout(isBookRemoved));
+                biblioteca.checkoutBibliotecaProduct(bookToCheckOut, BOOK_OPTION, user);
                 break;
             case CHECKOUT_MOVIE_OPTION:
                 Utililty.printOutString("\nPlease enter the name of the MOVIE to CHECK-OUT:");
                 String movieToCheckOut = Utililty.readConsoleInput();
-                Boolean isMovieRemoved = biblioteca.checkoutBibliotecaProduct(movieToCheckOut, MOVIE_OPTION, user);
-                Utililty.printOutString(biblioteca.returnMessageCheckout(isMovieRemoved));
+                biblioteca.checkoutBibliotecaProduct(movieToCheckOut, MOVIE_OPTION, user);
                 break;
             case RETURN_BOOK_OPTION:
                 Utililty.printOutString("\nPlease enter the name of the book to RETURN:");
                 String bookToReturn = Utililty.readConsoleInput();
-                Boolean isBookReturn= biblioteca.returnBibliotecaProduct(bookToReturn);
-                Utililty.printOutString(biblioteca.returnMessageReturn(isBookReturn));
+                biblioteca.returnBibliotecaProduct(bookToReturn);
                 break;
             case VIEW_RESERVATIONS_OPTION:
                 biblioteca.getListBibliotecaProductsRented();

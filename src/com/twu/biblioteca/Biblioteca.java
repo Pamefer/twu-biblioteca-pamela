@@ -68,6 +68,7 @@ public class Biblioteca {
                 isResourceRemoved = true;
             }
         }
+        Utililty.printOutString(returnMessageCheckout(isResourceRemoved, userOption));
         return isResourceRemoved;
     }
 
@@ -80,6 +81,7 @@ public class Biblioteca {
                 break;
             }
         }
+        Utililty.printOutString(returnMessageReturn(isBookReturned));
         return isBookReturned;
     }
 
@@ -87,8 +89,11 @@ public class Biblioteca {
         return user.toString();
     }
 
-    String returnMessageCheckout (Boolean isBookRemoved){
-        return isBookRemoved ? "Thank you, enjoy the book": "Sorry, that book is not available";
+    String returnMessageCheckout (Boolean isBookRemoved, int userOption){
+        String book = "book";
+        String movie = "movie";
+        String selectedOption = userOption == LIST_BOOK_OPTION ? book : movie;
+        return  isBookRemoved ? "Thank you, enjoy the "+ selectedOption: "Sorry, that is not available "+movie;
     }
 
     String returnMessageReturn (Boolean isBookRemoved){

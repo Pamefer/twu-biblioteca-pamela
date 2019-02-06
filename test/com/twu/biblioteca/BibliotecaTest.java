@@ -85,7 +85,7 @@ public class BibliotecaTest {
     public void shouldReturnSuccessMessageIfCheckOutTrue(){
         String successMessageExpected = "Thank you, enjoy the book";
         Boolean isCheckOut = true;
-        String successMessageActual = biblioteca.returnMessageCheckout(isCheckOut);
+        String successMessageActual = biblioteca.returnMessageCheckout(isCheckOut, BOOK_OPTION);
         assertEquals( successMessageExpected, successMessageActual);
     }
 
@@ -93,7 +93,7 @@ public class BibliotecaTest {
     public void shouldReturnUnSuccessMessageIfBookIsNotAvailable(){
         String unsuccessMessageExpected = "Sorry, that book is not available";
         Boolean isCheckOut = false;
-        String unsuccessMessageActual = biblioteca.returnMessageCheckout(isCheckOut);
+        String unsuccessMessageActual = biblioteca.returnMessageCheckout(isCheckOut, BOOK_OPTION);
         assertEquals( unsuccessMessageExpected, unsuccessMessageActual);
     }
 
