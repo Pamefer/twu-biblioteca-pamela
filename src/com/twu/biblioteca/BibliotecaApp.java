@@ -8,6 +8,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         UsersSet usersSet = new UsersSet();
         usersSet.chargeUsers(chargeUsers());
+        Biblioteca biblioteca = new Biblioteca(chargeBibliotecaProducts());
 
         System.out.printf(" ------------ Login ------------ \n");
         System.out.println("Enter library number:");
@@ -17,7 +18,6 @@ public class BibliotecaApp {
         Boolean successLogin = usersSet.login(libraryNumberInput,passwordInput);
 
         if(successLogin){
-            Biblioteca biblioteca = new Biblioteca(chargeBibliotecaProducts());
             String firstGreeting = biblioteca.welcomeMessage();
             System.out.println(firstGreeting);
             Menu menu = new Menu(biblioteca);

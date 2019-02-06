@@ -9,9 +9,6 @@ public abstract class BibliotecaProduct {
     private String name;
     private Boolean available;
 
-//    public BibliotecaProduct(){
-//    }
-
     public BibliotecaProduct(String name, Boolean available) {
         this.name = name;
         this.available = available;
@@ -29,11 +26,7 @@ public abstract class BibliotecaProduct {
         this.available = available;
     }
 
-    public void enable(){
-    }
 
-    public String toString(){
-        return "";
-    }
+    public abstract String toString();
 }
 

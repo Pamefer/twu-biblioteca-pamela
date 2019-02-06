@@ -10,8 +10,6 @@ public class Book extends BibliotecaProduct {
         this.year = year;
     }
 
-    //public Book(){}
-
     public String toString(){
         return String.format("|%20s|%20s|%20s|\n", getName(), author, year);
     }
