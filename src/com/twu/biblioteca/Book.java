@@ -4,8 +4,8 @@ public class Book extends BibliotecaProduct {
     private String author;
     private String year;
 
-    public Book(String name, Boolean available, String year, String author){
-        super(name, available);
+    public Book(String name, Boolean available, User rentedBy, String year, String author){
+        super(name, available, rentedBy);
         this.author = author;
         this.year = year;
     }

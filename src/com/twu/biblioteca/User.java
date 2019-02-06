@@ -9,6 +9,9 @@ public class User {
 
     private Boolean statusSession;
 
+    public User() {
+    }
+
     public User(String libraryNumber, String password, Boolean statusSession, String name, String mail, String phone) {
         this.libraryNumber = libraryNumber;
         this.password = password;
@@ -47,7 +50,7 @@ public class User {
     }
 
     public String toString(){
-        return String.format("|%20s|%20s|%20s|\n", getLibraryNumber(), getPassword(), getStatusSession());
+        return String.format("Name: %-20s\nEmail: %-20s\nPhone number: %-20s\n", getName(), getMail(), getPhone());
     }
 
 

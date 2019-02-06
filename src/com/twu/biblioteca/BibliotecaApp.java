@@ -15,26 +15,30 @@ public class BibliotecaApp {
         String libraryNumberInput = Utililty.readConsoleInput();
         System.out.println("\nEnter password:");
         String passwordInput = Utililty.readConsoleInput();
-        Boolean successLogin = usersSet.login(libraryNumberInput,passwordInput);
+        //Boolean successLogin = usersSet.login(libraryNumberInput,passwordInput);
+        User u = usersSet.login(libraryNumberInput,passwordInput);
 
-        if(successLogin){
+        if(u != null){
+
             String firstGreeting = biblioteca.welcomeMessage();
             System.out.println(firstGreeting);
-            Menu menu = new Menu(biblioteca);
+            Menu menu = new Menu(biblioteca, u);
             menu.readInputOption();
         }else{
             System.out.println("Incorrect login");
         }
+        biblioteca.getListBibliotecaProductsRented();
     }
 
     public static List<BibliotecaProduct> chargeBibliotecaProducts(){
         List<BibliotecaProduct> bibliotecaProductList= new ArrayList<>();
-        bibliotecaProductList.add(new Book("The Japanese girl", true, "1971", "Winston Graham"));
-        bibliotecaProductList.add(new Book("You",true, "2015", "Pamela"));
-        bibliotecaProductList.add(new Book("Take me out",true, "1987", "Gianella"));
-        bibliotecaProductList.add(new Movie("Movie1", true, "1971", "Winston Graham", "3"));
-        bibliotecaProductList.add(new Movie("Movie3",true, "2015", "Pamela","4"));
-        bibliotecaProductList.add(new Movie("Movie3",true, "1987", "Gianella","5"));
+        User user = new User();
+        bibliotecaProductList.add(new Book("The Japanese girl", true, user,"1971", "Winston Graham"));
+        bibliotecaProductList.add(new Book("You",true, user, "2015", "Pamela"));
+        bibliotecaProductList.add(new Book("Take me out",true, user, "1987", "Gianella"));
+        bibliotecaProductList.add(new Movie("Movie1", true, user, "1971", "Winston Graham", "3"));
+        bibliotecaProductList.add(new Movie("Movie2",true, user, "2015", "Pamela","4"));
+        bibliotecaProductList.add(new Movie("Movie3",true, user, "1987", "Gianella","5"));
         return bibliotecaProductList;
     }
 

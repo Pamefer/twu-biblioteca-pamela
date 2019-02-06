@@ -14,14 +14,16 @@ public class UsersSet {
         this.usersList = usersList;
     }
 
-    public Boolean login(String libraryNumber, String password){
-        Boolean isLoginCorrect = false;
+    public User login(String libraryNumber, String password){
+        User u = null;
+        //Boolean isLoginCorrect = false;
         for(User user: getUsersList()){
             if(libraryNumber.equals(user.getLibraryNumber()) && password.equals(user.getPassword())){
-                isLoginCorrect = true;
+                //isLoginCorrect = true;
+                u = user;
                 user.setStatusSession(true);
             }
         }
-        return isLoginCorrect;
+        return u;
     }
 }

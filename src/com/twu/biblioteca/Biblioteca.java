@@ -23,6 +23,17 @@ public class Biblioteca {
         return listOfTypeOfBibliotecaProduct;
     }
 
+    void getListBibliotecaProductsRented(){
+        String reservations = "";
+        for (BibliotecaProduct bibliotecaProduct : bibliotecaProductList){
+            if(!bibliotecaProduct.getAvailable()){
+                reservations += String.format("Title:%20s\nRented to:%20s\n\n", bibliotecaProduct.getName(), bibliotecaProduct.getRentedBy().getName());
+            }
+        }
+        System.out.printf(reservations);
+    }
+
+
     void createListsOfResourcesAvailable(){
         listBooksAvailable = new ArrayList<>();
         listMoviesAvailable = new ArrayList<>();
@@ -50,13 +61,13 @@ public class Biblioteca {
     }
 
 
-    Boolean checkoutResource(String resource, int userOption){
+    Boolean checkoutResource(String resource, int userOption, User user){
         Boolean isResourceRemoved = false;
         for(BibliotecaProduct item: getListResourceAvailable(userOption)){
             if(item.getName().contains(resource)){
                 item.setAvailable(false);
+                item.setRentedBy(user);
                 isResourceRemoved = true;
-
             }
         }
         return isResourceRemoved;
@@ -72,6 +83,10 @@ public class Biblioteca {
             }
         }
         return isBookReturned;
+    }
+
+    String searchUserLogged(User user){
+        return user.toString();
     }
 
     String returnMessageCheckout (Boolean isBookRemoved){

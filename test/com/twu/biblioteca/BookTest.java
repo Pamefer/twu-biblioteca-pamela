@@ -8,25 +8,14 @@ public class BookTest {
     private Book book;
 
     @Before
-    public void chhargeBookOfTest(){
-        book = new Book("Flowers", true, "1678", "Radnedy Cajas");
+    public void chargeBookOfTest(){
+        User user = new User();
+        book = new Book("Flowers", true, user, "1678", "Radnedy Cajas");
     }
 
-//    @Test
-//    public void shouldGetNameOfBook() {
-//        String actual = book.getName();
-//        assertEquals("Flowers", actual);
-//    }
-//
-//    @Test
-//    public void shouldGetAuthorOfBook(){
-//        String actual = book.getAuthor();
-//        assertEquals("Radnedy Cajas", actual);
-//    }
-//
-//    @Test
-//    public void shouldGetYearOfBook(){
-//        String actual = book.getYear();
-//        assertEquals("1678", actual);
-//    }
+    @Test
+    public void shouldGetNameOfBook() {
+        String actual = book.getName();
+        assertEquals("Flowers", actual);
+    }
 }

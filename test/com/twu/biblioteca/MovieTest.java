@@ -10,7 +10,8 @@ public class MovieTest {
 
     @Before
     public void chargeMovie(){
-        movie = new Movie("Sky", true, "2016", "Adam Sandler", "3");
+        User user = new User();
+        movie = new Movie("Sky", true, user, "2016", "Adam Sandler", "3");
     }
 
 //    @Test

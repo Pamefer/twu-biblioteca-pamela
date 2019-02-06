@@ -5,8 +5,8 @@ public class Movie extends BibliotecaProduct {
     private String rating;
     private String year;
 
-    public Movie(String name, Boolean available, String year, String director, String rating) {
-        super(name, available);
+    public Movie(String name, Boolean available, User rentedBy, String year, String director, String rating) {
+        super(name, available, rentedBy);
         this.year = year;
         this.director = director;
         this.rating = rating;
