@@ -54,7 +54,7 @@ public class Menu {
                 System.out.println("\nPlease enter the name of the BOOK to CHECK-OUT:");
                 String bookToCheckOut = Utililty.readConsoleInput();
                 Boolean isBookRemoved = biblioteca.checkoutResource(bookToCheckOut, BOOK_OPTION);
-//                    resource = new Resource();
+//                    resource = new BibliotecaProduct();
 //                    Boolean isBookRemoved2 = resource.checkout(bookToCheckOut, getListResourceAvailable());
                 System.out.println(biblioteca.returnMessageCheckout(isBookRemoved));
                 break;
@@ -62,7 +62,7 @@ public class Menu {
                 System.out.println("\nPlease enter the name of the MOVIE to CHECK-OUT:");
                 String movieToCheckOut = Utililty.readConsoleInput();
                 Boolean isMovieRemoved = biblioteca.checkoutResource(movieToCheckOut, MOVIE_OPTION);
-//                    resource = new Resource();
+//                    resource = new BibliotecaProduct();
 //                    Boolean isBookRemoved2 = resource.checkout(bookToCheckOut, getListResourceAvailable());
                 System.out.println(biblioteca.returnMessageCheckout(isMovieRemoved));
                 break;

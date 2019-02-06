@@ -13,15 +13,15 @@ public class MovieTest {
         movie = new Movie("Sky", true, "2016", "Adam Sandler", "3");
     }
 
-    @Test
-    public void shouldReturnDirector(){
-        String actual = movie.getDirector();
-        assertEquals("Adam Sandler", actual);
-    }
-
-    @Test
-    public void shouldReturnRating(){
-        String actual = movie.getRating();
-        assertEquals("3", actual);
-    }
+//    @Test
+//    public void shouldReturnDirector(){
+//        String actual = movie.getDirector();
+//        assertEquals("Adam Sandler", actual);
+//    }
+//
+//    @Test
+//    public void shouldReturnRating(){
+//        String actual = movie.getRating();
+//        assertEquals("3", actual);
+//    }
 }

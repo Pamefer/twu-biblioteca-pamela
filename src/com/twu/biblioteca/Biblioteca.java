@@ -4,40 +4,36 @@ import java.util.List;
 
 public class Biblioteca {
 
-    private List<Resource> resourcesList;
-    private List<Resource> listBooksAvailable;
-    private List<Resource> listMoviesAvailable;
+    private List<BibliotecaProduct> bibliotecaProductList;
+    private List<User> usersList;
+
+    private List<BibliotecaProduct> listBooksAvailable;
+    private List<BibliotecaProduct> listMoviesAvailable;
 
     private final int LIST_BOOK_OPTION = 1;
     private final int DEFAULT_OPTION = 1;
 
-    Biblioteca(){
-        this.resourcesList = new ArrayList<>();
-        this.resourcesList.add(new Book("The Japanese girl", true, "1971", "Winston Graham"));
-        this.resourcesList.add(new Book("You",true, "2015", "Pamela"));
-        this.resourcesList.add(new Book("Take me out",true, "1987", "Gianella"));
-        this.resourcesList.add(new Movie("Movie1", true, "1971", "Winston Graham", "3"));
-        this.resourcesList.add(new Movie("Movie3",true, "2015", "Pamela","4"));
-        this.resourcesList.add(new Movie("Movie3",true, "1987", "Gianella","5"));
-        getListResourceAvailable(DEFAULT_OPTION);
+    Biblioteca(List<BibliotecaProduct> resourcesList, List<User> usersList ){
+        this.bibliotecaProductList = resourcesList;
+        this.usersList = usersList;
     }
 
-    public List<Resource> getListResourceAvailable(int userOption) {
-        List<Resource> listOfTypeOfResource = null;
+    public List<BibliotecaProduct> getListResourceAvailable(int userOption) {
+        List<BibliotecaProduct> listOfTypeOfBibliotecaProduct = null;
         createListsOfResourcesAvailable();
-        listOfTypeOfResource = (userOption == LIST_BOOK_OPTION) ? listBooksAvailable : listMoviesAvailable;
-        return listOfTypeOfResource;
+        listOfTypeOfBibliotecaProduct = (userOption == LIST_BOOK_OPTION) ? listBooksAvailable : listMoviesAvailable;
+        return listOfTypeOfBibliotecaProduct;
     }
 
     void createListsOfResourcesAvailable(){
         listBooksAvailable = new ArrayList<>();
         listMoviesAvailable = new ArrayList<>();
-        for (Resource resource: resourcesList){
-            if(resource.getAvailable() && isInstanceOfBook(resource)) {
-                listBooksAvailable.add(resource);
+        for (BibliotecaProduct bibliotecaProduct : bibliotecaProductList){
+            if(bibliotecaProduct.getAvailable() && isInstanceOfBook(bibliotecaProduct)) {
+                listBooksAvailable.add(bibliotecaProduct);
             }
-            if(resource.getAvailable() && isInstanceOfMovie(resource)){
-                listMoviesAvailable.add(resource);
+            if(bibliotecaProduct.getAvailable() && isInstanceOfMovie(bibliotecaProduct)){
+                listMoviesAvailable.add(bibliotecaProduct);
             }
         }
     }
@@ -49,8 +45,8 @@ public class Biblioteca {
 
     String showResources(int userOption){
         String result = "";
-        for (Resource resource: getListResourceAvailable(userOption)){
-            result += resource;
+        for (BibliotecaProduct bibliotecaProduct : getListResourceAvailable(userOption)){
+            result += bibliotecaProduct;
         }
         return result;
     }
@@ -58,7 +54,7 @@ public class Biblioteca {
 
     Boolean checkoutResource(String resource, int userOption){
         Boolean isResourceRemoved = false;
-        for(Resource item: getListResourceAvailable(userOption)){
+        for(BibliotecaProduct item: getListResourceAvailable(userOption)){
             if(item.getName().contains(resource)){
                 item.setAvailable(false);
                 isResourceRemoved = true;
@@ -69,7 +65,7 @@ public class Biblioteca {
 
     Boolean returnBook(String book){
         Boolean isBookReturned = false;
-        for(Resource item: resourcesList){
+        for(BibliotecaProduct item: bibliotecaProductList){
             if(item.getName().contains(book) && !item.getAvailable()) {
                 isBookReturned = true;
                 item.setAvailable(true);
@@ -87,11 +83,11 @@ public class Biblioteca {
         return isBookRemoved ? "Thank you for returning the book": "That is not a valid book to return";
     }
 
-    Boolean isInstanceOfBook(Resource resource){
-        return resource instanceof Book;
+    Boolean isInstanceOfBook(BibliotecaProduct bibliotecaProduct){
+        return bibliotecaProduct instanceof Book;
     }
 
-    Boolean isInstanceOfMovie(Resource resource){
-        return resource instanceof Movie;
+    Boolean isInstanceOfMovie(BibliotecaProduct bibliotecaProduct){
+        return bibliotecaProduct instanceof Movie;
     }
 }
