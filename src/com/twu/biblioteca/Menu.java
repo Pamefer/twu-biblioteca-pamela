@@ -17,7 +17,7 @@ public class Menu {
     private final int QUIT_OPTION = 0;
     private Biblioteca biblioteca;
     private User user;
-    ;
+
 
     public Menu(Biblioteca biblioteca, User user) {
         this.optionsList =  new ArrayList<>();
@@ -82,7 +82,7 @@ public class Menu {
                 break;
             case QUIT_OPTION:
                 Utililty.printOutString("Exit");
-                //System.exit(0);
+                System.exit(0);
                 break;
         }
     }

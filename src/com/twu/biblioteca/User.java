@@ -7,15 +7,12 @@ public class User {
     private String mail;
     private String phone;
 
-    private Boolean statusSession;
-
     public User() {
     }
 
     public User(String libraryNumber, String password, Boolean statusSession, String name, String mail, String phone) {
         this.libraryNumber = libraryNumber;
         this.password = password;
-        this.statusSession = statusSession;
         this.name = name;
         this.mail = mail;
         this.phone = phone;
@@ -27,10 +24,6 @@ public class User {
 
     public String getPassword() {
         return password;
-    }
-
-    public Boolean getStatusSession() {
-        return statusSession;
     }
 
     public String getName() {
@@ -45,9 +38,6 @@ public class User {
         return phone;
     }
 
-    public void setStatusSession(Boolean statusSession) {
-        this.statusSession = statusSession;
-    }
 
     public String toString(){
         return String.format("Name: %-20s\nEmail: %-20s\nPhone number: %-20s\n", getName(), getMail(), getPhone());

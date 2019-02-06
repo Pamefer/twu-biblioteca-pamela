@@ -7,12 +7,12 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class MenuTest {
     private Biblioteca biblioteca;
-    List<BibliotecaProduct> bibliotecaProductList;
+    private List<BibliotecaProduct> bibliotecaProductList;
     private User user = new User();
-
 
     @Before
     public void chargeDate(){
@@ -28,18 +28,19 @@ public class MenuTest {
 
     @Test
     public void shouldReturnValidOptionMenu(){
-        Boolean expected = true;
+        String option = "2";
         Menu menu = new Menu(biblioteca, user);
-        Boolean actual = new Utililty().isValidOption("2", menu.getOptionsList());
-        assertEquals(expected, actual);
+        Boolean actual = new Utililty().isValidOption(option, menu.getOptionsList());
+        assertTrue(actual);
     }
 
     @Test
     public void shouldReturnInvalidOptionMenuOutOfRange(){
-        Boolean expected = false;
+        String option = "8";
         Menu menu = new Menu(biblioteca, user);
-        Boolean actual = new Utililty().isValidOption("9", menu.getOptionsList());
-        assertEquals(expected, actual);
+        Boolean actual = new Utililty().isValidOption(option, menu.getOptionsList());
+        System.out.println(actual);
+        assertFalse(actual);
     }
 
     @Test

@@ -15,12 +15,12 @@ public class Utililty {
         boolean isValid = true;
         try{
             int options = Integer.parseInt(option);
-            if(options > optionsList.size() ){
+            if(options > optionsList.size() - 1){
                 isValid = false;
-                System.out.println("Please, select a valid option!");
+                printOutString("Please, select a valid option!");
             }
         }catch(NumberFormatException e){
-            System.out.println("Please, select a number");
+            printOutString("Please, select a number");
             isValid = false;
         }
         return isValid;

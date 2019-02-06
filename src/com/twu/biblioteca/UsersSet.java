@@ -15,15 +15,16 @@ public class UsersSet {
     }
 
     public User login(String libraryNumber, String password){
-        User u = null;
-        //Boolean isLoginCorrect = false;
+        User userLogged = null;
         for(User user: getUsersList()){
             if(libraryNumber.equals(user.getLibraryNumber()) && password.equals(user.getPassword())){
-                //isLoginCorrect = true;
-                u = user;
-                user.setStatusSession(true);
+                userLogged = user;
             }
         }
-        return u;
+        return userLogged;
+    }
+
+    public Boolean isUserLogged(User userLogged){
+        return userLogged != null;
     }
 }
