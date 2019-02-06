@@ -82,7 +82,7 @@ public class Menu {
                 break;
             case QUIT_OPTION:
                 Utililty.printOutString("Exit");
-                System.exit(0);
+                //System.exit(0);
                 break;
         }
     }

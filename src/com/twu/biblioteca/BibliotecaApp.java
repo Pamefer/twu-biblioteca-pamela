@@ -10,24 +10,25 @@ public class BibliotecaApp {
         usersSet.chargeUsers(chargeUsers());
         Biblioteca biblioteca = new Biblioteca(chargeBibliotecaProducts());
 
-        Utililty.printOutString(" ------------ Login ------------ \n");
-        Utililty.printOutString("Enter library number:");
-        String libraryNumberInput = Utililty.readConsoleInput();
-        Utililty.printOutString("\nEnter password:");
-        String passwordInput = Utililty.readConsoleInput();
-        //Boolean successLogin = usersSet.login(libraryNumberInput,passwordInput);
-        User u = usersSet.login(libraryNumberInput,passwordInput);
+        while (2<3) {
+            Utililty.printOutString(" ------------ Login ------------ \n");
+            Utililty.printOutString("Enter library number:");
+            String libraryNumberInput = Utililty.readConsoleInput();
+            Utililty.printOutString("\nEnter password:");
+            String passwordInput = Utililty.readConsoleInput();
+            //Boolean successLogin = usersSet.login(libraryNumberInput,passwordInput);
+            User u = usersSet.login(libraryNumberInput, passwordInput);
 
-        if(u != null){
+            if (u != null) {
 
-            String firstGreeting = biblioteca.welcomeMessage();
-            Utililty.printOutString(firstGreeting);
-            Menu menu = new Menu(biblioteca, u);
-            menu.readInputOption();
-        }else{
-            Utililty.printOutString("Incorrect login");
+                String firstGreeting = biblioteca.welcomeMessage();
+                Utililty.printOutString(firstGreeting);
+                Menu menu = new Menu(biblioteca, u);
+                menu.readInputOption();
+            } else {
+                Utililty.printOutString("Incorrect login");
+            }
         }
-        biblioteca.getListBibliotecaProductsRented();
     }
 
     public static List<BibliotecaProduct> chargeBibliotecaProducts(){

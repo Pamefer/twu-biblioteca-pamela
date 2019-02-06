@@ -5,7 +5,6 @@ import java.util.List;
 public class Biblioteca {
 
     private List<BibliotecaProduct> bibliotecaProductList;
-
     private List<BibliotecaProduct> listBooksAvailable;
     private List<BibliotecaProduct> listMoviesAvailable;
 
@@ -29,7 +28,7 @@ public class Biblioteca {
                 reservations += String.format("Title:%20s\nRented to:%20s\n\n", bibliotecaProduct.getName(), bibliotecaProduct.getRentedBy().getName());
             }
         }
-        System.out.printf(reservations);
+        Utililty.printOutString(reservations);
     }
 
 
