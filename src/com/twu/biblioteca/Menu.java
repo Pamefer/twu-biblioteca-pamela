@@ -5,16 +5,9 @@ import java.util.List;
 
 public class Menu {
     private List<String> optionsList;
+
     private final int BOOK_OPTION = 1;
     private final int MOVIE_OPTION = 2;
-    private final int LIST_BOOK_OPTION = 1;
-    private final int LIST_MOVIE_OPTION = 2;
-    private final int CHECKOUT_BOOK_OPTION = 3;
-    private final int CHECKOUT_MOVIE_OPTION = 4;
-    private final int RETURN_BOOK_OPTION = 5;
-    private final int VIEW_RESERVATIONS_OPTION = 6;
-    private final int VIEW_PROFILE_OPTION = 7;
-    private final int QUIT_OPTION = 0;
     private Biblioteca biblioteca;
     private User user;
 
@@ -33,7 +26,6 @@ public class Menu {
         optionsList.add("0. Quit");
     }
 
-
     void readInputOption(){
         String option;
         do{
@@ -49,7 +41,8 @@ public class Menu {
 
      void selectOption(String option){
         int options = Integer.parseInt(option);
-        switch (options){
+        Estado level = Estado.fetchValue(options);
+        switch (level){
             case LIST_BOOK_OPTION:
                 Utililty.printOutString(biblioteca.showBibliotecaBook());
                 break;
@@ -73,7 +66,6 @@ public class Menu {
                 break;
             case VIEW_RESERVATIONS_OPTION:
                 biblioteca.getListBibliotecaProductsRented();
-               // System.out.println(biblioteca.getReservationAnotherList());
                 break;
             case VIEW_PROFILE_OPTION:
                 Utililty.printOutString(biblioteca.searchUserLogged(user));
@@ -86,7 +78,7 @@ public class Menu {
     }
 
     Boolean isOptionToQuit (int option){
-        return option != QUIT_OPTION;
+        return option != 0;
     }
 
     public List<String> getOptionsList() {
