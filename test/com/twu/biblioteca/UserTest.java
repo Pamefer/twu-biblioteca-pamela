@@ -15,8 +15,8 @@ public class UserTest {
     }
 
     @Test
-    public void shoukdRetornSringInfoUser(){
-        String stringExpected = "";
+    public void shouldRetornSringInfoUser(){
+        String stringExpected = String.format("Name: %-20s\nEmail: %-20s\nPhone number: %-20s\n", "Jony", "jony@gmail.com", "0989906930");
         String stringActual = user.toString();
         assertEquals(stringExpected,stringActual);
     }
