@@ -15,6 +15,13 @@ public class UserTest {
     }
 
     @Test
+    public void shoukdRetornSringInfoUser(){
+        String stringExpected = "";
+        String stringActual = user.toString();
+        assertEquals(stringExpected,stringActual);
+    }
+
+    @Test
     public  void shouldReturnUserIfSuccessLogin(){
         String libraryNumber = "1";
         String password = "1234";

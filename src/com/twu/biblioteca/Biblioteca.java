@@ -5,70 +5,84 @@ import java.util.List;
 public class Biblioteca {
 
     private List<BibliotecaProduct> bibliotecaProductList;
-    private List<Book> listBooksAvailable;
-    private List<Movie> listMoviesAvailable;
+    private List<BibliotecaProduct> listBooksAvailable;
+    private List<BibliotecaProduct> listMoviesAvailable;
     private final int LIST_BOOK_OPTION = 1;
 
     Biblioteca(List<BibliotecaProduct> bibliotecaProductList){
         this.bibliotecaProductList = bibliotecaProductList;
     }
 
+    public List<BibliotecaProduct> getListBibliotecaProductAvailable(int userOption) {
+        List<BibliotecaProduct> listOfTypeOfBibliotecaProduct = null;
+        createListsOfProductAvailable();
+        listOfTypeOfBibliotecaProduct = (userOption == LIST_BOOK_OPTION) ? listBooksAvailable: listMoviesAvailable;
+        return listOfTypeOfBibliotecaProduct;
+    }
+
+    private void createListsOfProductAvailable(){
+        listBooksAvailable = new ArrayList<>();
+        listMoviesAvailable = new ArrayList<>();
+        for (BibliotecaProduct bibliotecaProduct : bibliotecaProductList){
+            if(bibliotecaProduct.getAvailable() && isInstanceOfBook(bibliotecaProduct)) {
+                listBooksAvailable.add(bibliotecaProduct);
+            }
+            if(bibliotecaProduct.getAvailable() && isInstanceOfMovie(bibliotecaProduct)){
+                listMoviesAvailable.add(bibliotecaProduct);
+            }
+        }
+    }
+
+    String showBibliotecaProduct(int userOption){
+        String result = "";
+        for (BibliotecaProduct bibliotecaProduct : getListBibliotecaProductAvailable(userOption)){
+            result += bibliotecaProduct;
+        }
+        return result;
+    }
+
+
+    Boolean checkoutBibliotecaProduct(String resource, int userOption, User user){
+        Boolean isResourceRemoved = false;
+        for(BibliotecaProduct item: getListBibliotecaProductAvailable(userOption)){
+            if(getNameBibliotecaProduct(item).contains(resource)){
+                item.setAvailable(false);
+                item.setRentedBy(user);
+                isResourceRemoved = true;
+            }
+        }
+        Utililty.printOutString(returnMessageCheckout(isResourceRemoved, userOption));
+        return isResourceRemoved;
+    }
+
+    public String getNameBibliotecaProduct(BibliotecaProduct bp)
+    {
+        if ( isInstanceOfBook(bp)) {
+            Book b = (Book)bp;
+            return  b.getName();
+        } else if ( isInstanceOfMovie(bp) ) {
+            Movie m = (Movie)bp;
+            return m.getName();
+        }
+        return null;
+    }
+
+    Boolean returnBibliotecaProduct(String resource){
+        Boolean isBookReturned = false;
+        for(BibliotecaProduct item: bibliotecaProductList){
+            if(getNameBibliotecaProduct(item).contains(resource) && !item.getAvailable()) {
+                isBookReturned = true;
+                item.setAvailable(true);
+                break;
+            }
+        }
+        Utililty.printOutString(returnMessageReturn(isBookReturned));
+        return isBookReturned;
+    }
 
     String welcomeMessage(){
          String greeting = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
          return greeting;
-    }
-
-
-    void fillListOfTypesBibliotecaProduct() {
-        listBooksAvailable = new ArrayList<>();
-        listMoviesAvailable = new ArrayList<>();
-        for (BibliotecaProduct bibliotecaProduct : bibliotecaProductList) {
-            if (bibliotecaProduct.getAvailable() && isInstanceOfBook(bibliotecaProduct)) {
-                listBooksAvailable.add((Book) bibliotecaProduct);
-            }
-            if (bibliotecaProduct.getAvailable() && isInstanceOfMovie(bibliotecaProduct)) {
-                listMoviesAvailable.add((Movie) bibliotecaProduct);
-            }
-        }
-    }
-
-    List<Book> getTotalListBook(){
-        List<Book> bookList = new ArrayList<>();
-        for(BibliotecaProduct bibliotecaProduct: bibliotecaProductList){
-            if(isInstanceOfBook(bibliotecaProduct)){
-                bookList.add((Book) bibliotecaProduct);
-            }
-        }
-        return bookList;
-    }
-
-    List<Movie> getListMoviesAvailable(){
-        fillListOfTypesBibliotecaProduct();
-        return listMoviesAvailable;
-    }
-
-    List<Book> getListBooksAvailable(){
-        fillListOfTypesBibliotecaProduct();
-        return listBooksAvailable;
-    }
-
-    String showBibliotecaBook(){
-        fillListOfTypesBibliotecaProduct();
-        String result = "";
-            for (BibliotecaProduct b : listBooksAvailable){
-                result += b;
-        }
-        return result;
-    }
-
-    String showBibliotecaMovie(){
-        fillListOfTypesBibliotecaProduct();
-        String result = "";
-        for (BibliotecaProduct b : listMoviesAvailable){
-            result += b;
-        }
-        return result;
     }
 
     void getListBibliotecaProductsRented() {
@@ -84,46 +98,6 @@ public class Biblioteca {
             }
         }
         Utililty.printOutString(reservations);
-    }
-
-    Boolean checkoutBook (String resource, int userOption, User user){
-        Boolean isResourceRemoved = false;
-        for(Book item: getListBooksAvailable()){
-            if(item.getName().contains(resource)){
-                item.setAvailable(false);
-                item.setRentedBy(user);
-                isResourceRemoved = true;
-            }
-        }
-        Utililty.printOutString(returnMessageCheckout(isResourceRemoved, userOption));
-        return isResourceRemoved;
-    }
-
-    Boolean checkoutMovie (String resource, int userOption, User user){
-        Boolean isResourceRemoved = false;
-        for(Movie item: getListMoviesAvailable()){
-            if(item.getName().contains(resource)){
-                item.setAvailable(false);
-                item.setRentedBy(user);
-                isResourceRemoved = true;
-            }
-        }
-        Utililty.printOutString(returnMessageCheckout(isResourceRemoved, userOption));
-        return isResourceRemoved;
-    }
-
-
-    Boolean returnBook(String book){
-        Boolean isBookReturned = false;
-        for(Book item: getTotalListBook()){
-            if(item.getName().contains(book) && !item.getAvailable()) {
-                isBookReturned = true;
-                item.setAvailable(true);
-                break;
-            }
-        }
-        Utililty.printOutString(returnMessageReturn(isBookReturned));
-        return isBookReturned;
     }
 
     String searchUserLogged(User user){

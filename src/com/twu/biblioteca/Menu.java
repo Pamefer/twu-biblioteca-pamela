@@ -44,25 +44,25 @@ public class Menu {
         Estado level = Estado.fetchValue(options);
         switch (level){
             case LIST_BOOK_OPTION:
-                Utililty.printOutString(biblioteca.showBibliotecaBook());
+                Utililty.printOutString(biblioteca.showBibliotecaProduct(BOOK_OPTION));
                 break;
             case LIST_MOVIE_OPTION:
-                Utililty.printOutString(biblioteca.showBibliotecaMovie());
+                Utililty.printOutString(biblioteca.showBibliotecaProduct(MOVIE_OPTION));
                 break;
             case CHECKOUT_BOOK_OPTION:
                 Utililty.printOutString("\nPlease enter the name of the BOOK to CHECK-OUT:");
                 String bookToCheckOut = Utililty.readConsoleInput();
-                biblioteca.checkoutBook(bookToCheckOut, BOOK_OPTION, user);
+                biblioteca.checkoutBibliotecaProduct(bookToCheckOut, BOOK_OPTION, user);
                 break;
             case CHECKOUT_MOVIE_OPTION:
                 Utililty.printOutString("\nPlease enter the name of the MOVIE to CHECK-OUT:");
                 String movieToCheckOut = Utililty.readConsoleInput();
-                biblioteca.checkoutMovie(movieToCheckOut, MOVIE_OPTION, user);
+                biblioteca.checkoutBibliotecaProduct(movieToCheckOut, MOVIE_OPTION, user);
                 break;
             case RETURN_BOOK_OPTION:
                 Utililty.printOutString("\nPlease enter the name of the book to RETURN:");
                 String bookToReturn = Utililty.readConsoleInput();
-                biblioteca.returnBook(bookToReturn);
+                biblioteca.returnBibliotecaProduct(bookToReturn);
                 break;
             case VIEW_RESERVATIONS_OPTION:
                 biblioteca.getListBibliotecaProductsRented();
