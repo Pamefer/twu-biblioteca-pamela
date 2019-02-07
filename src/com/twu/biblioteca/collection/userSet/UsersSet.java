@@ -4,9 +4,9 @@ import java.util.List;
 
 public class UsersSet {
 
-    public List<User> usersList;
+    protected List<User> usersList;
 
-    public List<User> getUsersList() {
+    protected List<User> getUsersList() {
         return usersList;
     }
 

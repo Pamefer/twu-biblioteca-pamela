@@ -8,9 +8,7 @@ import java.util.List;
 
 public class Menu {
     private List<String> optionsList;
-
-    private final int BOOK_OPTION = 1;
-    private final int MOVIE_OPTION = 2;
+    private final int QUIT_OPTION = 0;
     private Biblioteca biblioteca;
     private User user;
 
@@ -42,14 +40,14 @@ public class Menu {
         }while (isOptionToQuit(Integer.parseInt(option)));
     }
 
-     void selectOption(String option){
+     private void selectOption(String option){
         int optionCast = Integer.parseInt(option);
         Status selection = Status.fetchValue(optionCast);
         selection.execute(biblioteca, user);
     }
 
-    Boolean isOptionToQuit (int option){
-        return option != 0;
+    protected Boolean isOptionToQuit (int option){
+        return option != QUIT_OPTION;
     }
 
     public List<String> getOptionsList() {
