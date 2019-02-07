@@ -1,22 +1,22 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.collection.productSet;
 
-public class Book implements BibliotecaProduct {
+import com.twu.biblioteca.collection.userSet.User;
+
+public class Movie implements BibliotecaProduct {
     private String name;
     private Boolean available;
     private User rentedBy;
+    private String director;
+    private String rating;
     private String year;
-    private String author;
 
-    public Book(String name, Boolean available, User rentedBy, String year, String author){
+    public Movie(String name, Boolean available, User rentedBy, String year, String director, String rating) {
         this.name = name;
         this.available = available;
         this.rentedBy = rentedBy;
         this.year = year;
-        this.author = author;
-    }
-
-    public String getName() {
-        return name;
+        this.director = director;
+        this.rating = rating;
     }
 
     public User getRentedBy() {
@@ -35,9 +35,11 @@ public class Book implements BibliotecaProduct {
         this.rentedBy = rentedBy;
     }
 
-
-    public String toString(){
-        return String.format("|%20s|%20s|%20s|\n", name, author, year);
+    public String getName() {
+        return name;
     }
 
+    public String toString(){
+        return String.format("|%20s|%20s|%20s|%20s|\n", name, director, year, rating);
+    }
 }

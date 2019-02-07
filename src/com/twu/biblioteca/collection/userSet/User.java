@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.collection.userSet;
 
 public class User {
     private String libraryNumber;

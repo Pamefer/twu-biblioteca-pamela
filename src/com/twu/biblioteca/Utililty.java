@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class Utililty {
 
-    static String readConsoleInput(){
+    public static String readConsoleInput(){
         Scanner scan = new Scanner(System.in);
         String input = scan.nextLine();
         return input;
     }
 
-    static boolean isValidOption(String option, List<String> optionsList){
+    public static boolean isValidOption(String option, List<String> optionsList){
         boolean isValid = true;
         try{
             int options = Integer.parseInt(option);
@@ -26,7 +26,7 @@ public class Utililty {
         return isValid;
     }
 
-    static String concatList(List<String> newList){
+    public static String concatList(List<String> newList){
         String result = "";
         for (String b: newList){
             result += b + "\n";
@@ -34,7 +34,7 @@ public class Utililty {
         return result;
     }
 
-    static void printOutString(String text){
+    public static void printOutString(String text){
         System.out.println(text);
     }
 

@@ -1,4 +1,10 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.collection;
+import com.twu.biblioteca.Utililty;
+import com.twu.biblioteca.collection.productSet.BibliotecaProduct;
+import com.twu.biblioteca.collection.productSet.Book;
+import com.twu.biblioteca.collection.productSet.Movie;
+import com.twu.biblioteca.collection.userSet.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,11 +15,11 @@ public class Biblioteca {
     private List<BibliotecaProduct> listMoviesAvailable;
     private final int LIST_BOOK_OPTION = 1;
 
-    Biblioteca(List<BibliotecaProduct> bibliotecaProductList){
+    public Biblioteca(List<BibliotecaProduct> bibliotecaProductList){
         this.bibliotecaProductList = bibliotecaProductList;
     }
 
-    public List<BibliotecaProduct> getListBibliotecaProductAvailable(int userOption) {
+    protected List<BibliotecaProduct> getListBibliotecaProductAvailable(int userOption) {
         List<BibliotecaProduct> listOfTypeOfBibliotecaProduct = null;
         createListsOfProductAvailable();
         listOfTypeOfBibliotecaProduct = (userOption == LIST_BOOK_OPTION) ? listBooksAvailable: listMoviesAvailable;
@@ -33,7 +39,7 @@ public class Biblioteca {
         }
     }
 
-    String showBibliotecaProduct(int userOption){
+    protected String showBibliotecaProduct(int userOption){
         String result = "";
         for (BibliotecaProduct bibliotecaProduct : getListBibliotecaProductAvailable(userOption)){
             result += bibliotecaProduct;
@@ -42,7 +48,7 @@ public class Biblioteca {
     }
 
 
-    Boolean checkoutBibliotecaProduct(String resource, int userOption, User user){
+    protected Boolean checkoutBibliotecaProduct(String resource, int userOption, User user){
         Boolean isResourceRemoved = false;
         for(BibliotecaProduct item: getListBibliotecaProductAvailable(userOption)){
             if(getNameBibliotecaProduct(item).contains(resource)){
@@ -55,19 +61,7 @@ public class Biblioteca {
         return isResourceRemoved;
     }
 
-    public String getNameBibliotecaProduct(BibliotecaProduct bp)
-    {
-        if ( isInstanceOfBook(bp)) {
-            Book b = (Book)bp;
-            return  b.getName();
-        } else if ( isInstanceOfMovie(bp) ) {
-            Movie m = (Movie)bp;
-            return m.getName();
-        }
-        return null;
-    }
-
-    Boolean returnBibliotecaProduct(String resource){
+    protected Boolean returnBibliotecaProduct(String resource){
         Boolean isBookReturned = false;
         for(BibliotecaProduct item: bibliotecaProductList){
             if(getNameBibliotecaProduct(item).contains(resource) && !item.getAvailable()) {
@@ -80,12 +74,12 @@ public class Biblioteca {
         return isBookReturned;
     }
 
-    String welcomeMessage(){
-         String greeting = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
+    public String welcomeMessage(){
+         String greeting = "Welcome to collection. Your one-stop-shop for great book titles in Bangalore";
          return greeting;
     }
 
-    void getListBibliotecaProductsRented() {
+    protected void getListBibliotecaProductsRented() {
         String reservations = "";
         for (BibliotecaProduct bibliotecaProduct : bibliotecaProductList) {
             if (!bibliotecaProduct.getAvailable()) {
@@ -100,26 +94,38 @@ public class Biblioteca {
         Utililty.printOutString(reservations);
     }
 
-    String searchUserLogged(User user){
+    protected String searchUserLogged(User user){
         return user.toString();
     }
 
-    String returnMessageCheckout (Boolean isProductRemoved, int userOption){
+    private String getNameBibliotecaProduct(BibliotecaProduct bp)
+    {
+        if ( isInstanceOfBook(bp)) {
+            Book b = (Book)bp;
+            return  b.getName();
+        } else if ( isInstanceOfMovie(bp) ) {
+            Movie m = (Movie)bp;
+            return m.getName();
+        }
+        return null;
+    }
+
+    protected String returnMessageCheckout (Boolean isProductRemoved, int userOption){
         String book = "book";
         String movie = "movie";
         String selectedOption = userOption == LIST_BOOK_OPTION ? book : movie;
         return  isProductRemoved ? "Thank you, enjoy the "+ selectedOption: "Sorry, that is not available "+selectedOption;
     }
 
-    String returnMessageReturn (Boolean isBookRemoved){
+    protected String returnMessageReturn (Boolean isBookRemoved){
         return isBookRemoved ? "Thank you for returning the book": "That is not a valid book to return";
     }
 
-    Boolean isInstanceOfBook(BibliotecaProduct bibliotecaProduct){
+    protected Boolean isInstanceOfBook(BibliotecaProduct bibliotecaProduct){
         return bibliotecaProduct instanceof Book;
     }
 
-    Boolean isInstanceOfMovie(BibliotecaProduct bibliotecaProduct){
+    protected Boolean isInstanceOfMovie(BibliotecaProduct bibliotecaProduct){
         return bibliotecaProduct instanceof Movie;
     }
 }

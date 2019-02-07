@@ -1,6 +1,11 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.collection;
 
 
+import com.twu.biblioteca.BibliotecaApp;
+import com.twu.biblioteca.collection.productSet.BibliotecaProduct;
+import com.twu.biblioteca.collection.productSet.Book;
+import com.twu.biblioteca.collection.productSet.Movie;
+import com.twu.biblioteca.collection.userSet.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +24,7 @@ public class BibliotecaTest {
 
     @Test
     public void shouldReturnWelcomeMessage() {
-        String expected = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
+        String expected = "Welcome to collection. Your one-stop-shop for great book titles in Bangalore";
         String actual = biblioteca.welcomeMessage();
         assertEquals(expected, actual);
     }

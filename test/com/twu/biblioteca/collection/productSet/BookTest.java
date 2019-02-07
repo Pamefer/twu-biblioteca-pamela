@@ -1,6 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.collection.productSet;
+import com.twu.biblioteca.collection.productSet.Book;
+import com.twu.biblioteca.collection.userSet.User;
 import org.junit.Before;
-import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 

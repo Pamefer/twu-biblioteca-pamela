@@ -1,9 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.collection.productSet;
 
-import com.sun.tools.corba.se.idl.StringGen;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.twu.biblioteca.collection.userSet.User;
 
 public interface BibliotecaProduct {
 

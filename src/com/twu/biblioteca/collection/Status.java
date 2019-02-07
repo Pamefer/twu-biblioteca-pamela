@@ -1,4 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.collection;
+
+import com.twu.biblioteca.Utililty;
+import com.twu.biblioteca.collection.userSet.User;
 
 public enum Status {
 

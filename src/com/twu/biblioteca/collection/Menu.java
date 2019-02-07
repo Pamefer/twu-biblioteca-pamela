@@ -1,4 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.collection;
+
+import com.twu.biblioteca.Utililty;
+import com.twu.biblioteca.collection.userSet.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +29,7 @@ public class Menu {
         optionsList.add("0. Quit");
     }
 
-    void readInputOption(){
+    public void readInputOption(){
         String option;
         do{
             Utililty.printOutString("\n***** Select an option *****");

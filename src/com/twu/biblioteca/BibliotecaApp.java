@@ -1,5 +1,12 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.collection.*;
+import com.twu.biblioteca.collection.productSet.BibliotecaProduct;
+import com.twu.biblioteca.collection.productSet.Book;
+import com.twu.biblioteca.collection.productSet.Movie;
+import com.twu.biblioteca.collection.userSet.User;
+import com.twu.biblioteca.collection.userSet.UsersSet;
+
 import java.util.ArrayList;
 import java.util.List;
 
