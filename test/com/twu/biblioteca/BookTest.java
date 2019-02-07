@@ -13,9 +13,9 @@ public class BookTest {
         book = new Book("Flowers", true, user, "1678", "Radnedy Cajas");
     }
 
-    @Test
-    public void shouldGetNameOfBook() {
-        String actual = book.getName();
-        assertEquals("Flowers", actual);
-    }
+//    @Test
+//    public void shouldGetNameOfBook() {
+//        String actual = book.getName();
+//        assertEquals("Flowers", actual);
+//    }
 }

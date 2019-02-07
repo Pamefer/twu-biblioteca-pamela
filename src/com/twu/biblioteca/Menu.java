@@ -51,28 +51,29 @@ public class Menu {
         int options = Integer.parseInt(option);
         switch (options){
             case LIST_BOOK_OPTION:
-                Utililty.printOutString(biblioteca.showBibliotecaProduct(BOOK_OPTION));
+                Utililty.printOutString(biblioteca.showBibliotecaBook());
                 break;
             case LIST_MOVIE_OPTION:
-                Utililty.printOutString(biblioteca.showBibliotecaProduct(MOVIE_OPTION));
+                Utililty.printOutString(biblioteca.showBibliotecaMovie());
                 break;
             case CHECKOUT_BOOK_OPTION:
                 Utililty.printOutString("\nPlease enter the name of the BOOK to CHECK-OUT:");
                 String bookToCheckOut = Utililty.readConsoleInput();
-                biblioteca.checkoutBibliotecaProduct(bookToCheckOut, BOOK_OPTION, user);
+                biblioteca.checkoutBook(bookToCheckOut, BOOK_OPTION, user);
                 break;
             case CHECKOUT_MOVIE_OPTION:
                 Utililty.printOutString("\nPlease enter the name of the MOVIE to CHECK-OUT:");
                 String movieToCheckOut = Utililty.readConsoleInput();
-                biblioteca.checkoutBibliotecaProduct(movieToCheckOut, MOVIE_OPTION, user);
+                biblioteca.checkoutMovie(movieToCheckOut, MOVIE_OPTION, user);
                 break;
             case RETURN_BOOK_OPTION:
                 Utililty.printOutString("\nPlease enter the name of the book to RETURN:");
                 String bookToReturn = Utililty.readConsoleInput();
-                biblioteca.returnBibliotecaProduct(bookToReturn);
+                biblioteca.returnBook(bookToReturn);
                 break;
             case VIEW_RESERVATIONS_OPTION:
                 biblioteca.getListBibliotecaProductsRented();
+               // System.out.println(biblioteca.getReservationAnotherList());
                 break;
             case VIEW_PROFILE_OPTION:
                 Utililty.printOutString(biblioteca.searchUserLogged(user));

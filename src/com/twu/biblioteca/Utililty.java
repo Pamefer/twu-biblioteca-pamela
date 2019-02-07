@@ -37,4 +37,8 @@ public class Utililty {
     static void printOutString(String text){
         System.out.println(text);
     }
+
+    static void printOutString(List text){
+        System.out.println(text);
+    }
 }

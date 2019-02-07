@@ -55,29 +55,29 @@ public class BibliotecaTest {
 
     @Test
     public void shouldChekoutABook(){
-        boolean isCheckoutActual = biblioteca.checkoutBibliotecaProduct("You", BOOK_OPTION, user);
+        boolean isCheckoutActual = biblioteca.checkoutBook("You", BOOK_OPTION, user);
         assertTrue(isCheckoutActual);
     }
 
     @Test
     public void shouldNotChekoutABook(){
-        boolean isCheckoutActual = biblioteca.checkoutBibliotecaProduct("gdahjda" , BOOK_OPTION, user);
+        boolean isCheckoutActual = biblioteca.checkoutBook("gdahjda" , BOOK_OPTION, user);
         assertFalse(isCheckoutActual);
     }
 
     @Test
     public void shouldBeOneBookLessFromAllBooksIfCheckOut(){
         int numberBookExpected = 2;
-        biblioteca.checkoutBibliotecaProduct("You", BOOK_OPTION, user);
-        int numberBooksActual = biblioteca.getListBibliotecaProductAvailable(1).size();
+        biblioteca.checkoutBook("You", BOOK_OPTION, user);
+        int numberBooksActual = biblioteca.getListBooksAvailable().size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
 
     @Test
     public void shouldNotBeOneBookLessFromAvailableBooksIfBookNotExist(){
         int numberBookExpected = 3;
-        biblioteca.checkoutBibliotecaProduct("Me", BOOK_OPTION, user);
-        int numberBooksActual = biblioteca.getListBibliotecaProductAvailable(1).size();
+        biblioteca.checkoutBook("Me", BOOK_OPTION, user);
+        int numberBooksActual = biblioteca.getListBooksAvailable().size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
 
@@ -91,7 +91,7 @@ public class BibliotecaTest {
 
     @Test
     public void shouldReturnUnSuccessMessageIfBookIsNotAvailable(){
-        String unsuccessMessageExpected = "Sorry, that book is not available";
+        String unsuccessMessageExpected = "Sorry, that is not available book";
         Boolean isCheckOut = false;
         String unsuccessMessageActual = biblioteca.returnMessageCheckout(isCheckOut, BOOK_OPTION);
         assertEquals( unsuccessMessageExpected, unsuccessMessageActual);
@@ -101,15 +101,15 @@ public class BibliotecaTest {
 
     @Test
     public void shouldNotReturnABook(){
-        boolean isReturnActual = biblioteca.returnBibliotecaProduct("Adasdasd");
+        boolean isReturnActual = biblioteca.returnBook("Adasdasd");
         assertFalse(isReturnActual);
     }
 
     @Test
     public void shouldBeOneBookMoreFromAvailableBooksIfIsReturned(){
         int numberBookExpected = 3;
-        biblioteca.returnBibliotecaProduct("You");
-        int numberBooksActual = biblioteca.getListBibliotecaProductAvailable(1).size();
+        biblioteca.returnBook("You");
+        int numberBooksActual = biblioteca.getListBooksAvailable().size();
         assertEquals(numberBookExpected, numberBooksActual);
     }
 
@@ -134,15 +134,15 @@ public class BibliotecaTest {
 
     @Test
     public void shouldNotChekoutAMovie(){
-        boolean isCheckoutActual = biblioteca.checkoutBibliotecaProduct("MovieX", MOVIE_OPTION, user);
+        boolean isCheckoutActual = biblioteca.checkoutMovie("MovieX", MOVIE_OPTION, user);
         assertFalse(isCheckoutActual);
     }
 
     @Test
     public void shouldBeOneMovieLessFromAllMoviesIfCheckOut(){
         int numberMoviesExpected = 2;
-        biblioteca.checkoutBibliotecaProduct("Movie1", MOVIE_OPTION, user);
-        int numberMoviesActual = biblioteca.getListBibliotecaProductAvailable(MOVIE_OPTION).size();
+        biblioteca.checkoutMovie("Movie1", MOVIE_OPTION, user);
+        int numberMoviesActual = biblioteca.getListMoviesAvailable().size();
         assertEquals(numberMoviesExpected, numberMoviesActual);
     }
 
@@ -150,9 +150,17 @@ public class BibliotecaTest {
     @Test
     public void shouldNotBeOneMovieLessFromAvailableMoviesIfMovieNotExist(){
         int numberMoviesExpected = 3;
-        biblioteca.checkoutBibliotecaProduct("MovieX", MOVIE_OPTION, user);
-        int numberMoviesActual = biblioteca.getListBibliotecaProductAvailable(MOVIE_OPTION).size();
+        biblioteca.checkoutBook("MovieX", MOVIE_OPTION, user);
+        int numberMoviesActual = biblioteca.getListMoviesAvailable().size();
         assertEquals(numberMoviesExpected, numberMoviesActual);
     }
+
+//    @Test
+//    public void shouldAddUserInBibliotecaProductWhenIsChekout(){
+//        biblioteca.checkoutBibliotecaProduct("You", BOOK_OPTION, user);
+//
+//    }
+
+
 
 }
